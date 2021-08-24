@@ -1,0 +1,62 @@
+{
+    "question":[
+        {
+            "id": 11, 
+            "updated": "0000-00-000",
+            "quizText": "Literacy-1",
+            "quizChoices": [
+                {
+                    "id": 1,
+                    "text": "OK"
+                },
+                {
+                    "id": 2,
+                    "text": "NO"
+                }
+            ]
+        },
+        {
+            "id": 12, 
+            "updated": "0000-00-000",
+            "quizText": "Literacy-2 ",
+            "quizChoices": [
+                {
+                    "id": 1,
+                    "text": "True"
+                },
+                {
+                    "id": 2,
+                    "text": "False"
+                },
+                {
+                    "id": 3,
+                    "text": "NULL"
+                },
+                {
+                    "id": 4,
+                    "text": "undef"
+                }
+                
+            ]
+        },{
+            "id": 13, 
+            "updated": "0000-00-000",
+            "quizText": "Literacy-3",
+            "quizChoices": [
+                {
+                    "id": 1,
+                    "text": "Fizz"
+                },
+                {
+                    "id": 2,
+                    "text": "Bizz"
+                },
+                {
+                    "id": 3,
+                    "text": "FizzBizz"
+                }
+            ]
+        }
+
+    ]
+}
