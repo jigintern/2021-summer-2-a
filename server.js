@@ -22,6 +22,15 @@ class QuizServer extends Server {
                 
                 // 回答をのぞいた問題リストを返す。
                 return currentQuestions
+            case "/api/getAnswers":　// 回答一覧を取得
+                const ansList = questions.data
+                return ansList
+            case "/api/postResult": // 今回の結果をサーバへポスト
+                // フロントからPOSTされた結果からスコアを算出
+                
+                // 算出したスコアをresultdbに書き込み
+            case "/api/getRanking":
+                // resultからソートしたデータをフロントへ返す
         }
     }
 }
