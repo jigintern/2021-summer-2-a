@@ -1,62 +1,40 @@
 {
-    "question":[
+    "quizData": [
         {
-            "id": 11, 
-            "updated": "0000-00-000",
-            "quizText": "Literacy-1",
-            "quizChoices": [
+            "quizId": 1,
+            "statement": "aaaaaaaaaaaaaaaaa",
+            "choices": [
                 {
                     "id": 1,
-                    "text": "OK"
+                    "text": "aaaaaaaaaaa"
                 },
                 {
                     "id": 2,
-                    "text": "NO"
+                    "text": "oaaaaaaaaaaaa"
                 }
-            ]
+            ],
+            "answerId": 1,
+            "explanation": "aaaaaaaaa"
         },
         {
-            "id": 12, 
-            "updated": "0000-00-000",
-            "quizText": "Literacy-2 ",
-            "quizChoices": [
+            "quizId": 2,
+            "statement": "リンゴを英語にすると・・・？",
+            "choices": [
                 {
-                    "id": 1,
-                    "text": "True"
+                    "text": "aple",
+                    "id": 1
                 },
                 {
-                    "id": 2,
-                    "text": "False"
+                    "text": "apple",
+                    "id": 2
                 },
                 {
-                    "id": 3,
-                    "text": "NULL"
-                },
-                {
-                    "id": 4,
-                    "text": "undef"
+                    "text": "aple",
+                    "id": 3
                 }
-                
-            ]
-        },{
-            "id": 13, 
-            "updated": "0000-00-000",
-            "quizText": "Literacy-3",
-            "quizChoices": [
-                {
-                    "id": 1,
-                    "text": "Fizz"
-                },
-                {
-                    "id": 2,
-                    "text": "Bizz"
-                },
-                {
-                    "id": 3,
-                    "text": "FizzBizz"
-                }
-            ]
+            ],
+            "answersId": 2,
+            "explanation": "aaa"
         }
-
     ]
 }
