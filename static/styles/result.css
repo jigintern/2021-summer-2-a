@@ -1,0 +1,26 @@
+
+@charset "utf-8";
+
+body {
+    background-color: lightcyan;
+}
+.page_title {
+    margin-top: 20%;
+    text-align: center;
+}
+.text {
+    margin: 20%;
+    text-align: center;
+}
+button {
+    width: 200px;
+    height: 120px;
+}
+.result_button {
+    margin-top: auto;
+    text-align: center;
+    display: flex;
+}
+.button_item {
+    margin: auto;
+}
