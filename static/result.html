@@ -4,9 +4,59 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/sakura.css/css/sakura.css" type="text/css" />
 </head>
 <body>
   <script src="./main.html"></script>
   <script src="./result.html"></script>
+
+  <div class="page_title">
+    <h1>結果発表！</h1>
+</div>
+
+<!-- scoreが得点の変数、parameterが何点満点かの変数　評価を点数にするかは未定 -->
+<div class="text">
+    <p>あなたの得点は</p>
+    <p>score/parameter 点</p>
+    <p>です！</p>
+</div>
+
+<div class="result_button">
+    <div class="button_item">
+        <button id="top">トップに戻る</button>
+    </div>
+    <div class="button_item">
+        <button id="onceMore">もう一度挑戦</button>
+    </div>
+</div>
 </body>
+
+<!-- cssを適当につけた。別ファイルにする -->
+<style>
+  body {
+      background-color: lightcyan;
+  }
+  .page_title {
+      margin-top: 20%;
+      text-align: center;
+  }
+  .text {
+      margin: 20%;
+      text-align: center;
+  }
+  button {
+      width: 200px;
+      height: 120px;
+  }
+  .result_button {
+      margin-top: auto;
+      text-align: center;
+      display: flex;
+  }
+  .button_item {
+      margin: auto;
+  }
+</style>
+
 </html>
