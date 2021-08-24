@@ -1,0 +1,25 @@
+body {
+    background-color: lightcyan;
+  }
+
+  button {
+    width: 400px;
+    height: 120px;
+  }
+
+  .title {
+    text-align: center;
+    position: relative;
+    top: 100px;
+  }
+
+  .topButtons {
+    text-align: center;
+    position: relative;
+    top: 30%;
+  }
+
+  .buttonOption {
+    position: relative;
+    top: 120px;
+  }
