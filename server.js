@@ -2,6 +2,8 @@ import { Server } from "https://js.sabae.cc/Server.js";
 import { JSONDB } from "https://js.sabae.cc/JSONDB.js";
 import { getQuestion } from "./server/api/getQuestion.js";
 import { GETanswer } from "./server/api/GETanswer.js";
+import { getSession, getUser, saveUserName } from "./server/api/session.js";
+
 
 const questions = new JSONDB("./server/json/questions.json");
 // const results = new JSONDB("./server/json/result.json")
@@ -41,6 +43,15 @@ class QuizServer extends Server {
         // resultからソートしたデータをフロントへ返す
       case "/api/getQuestion":
         return getQuestion(3);  //returnを忘れずに！！
+      // セッション取得
+      case "/api/getSession":
+        return getSession(req.session);
+      // ユーザーを取得
+      case "/api/getUser":
+        return getUser(req.session);
+      // ユーザー名を設定
+      case "/api/saveUserName":
+        return saveUserName(req.session, req.name);
     }
   }
 }
