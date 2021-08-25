@@ -7,7 +7,7 @@ const ADMIN_JSON_PATH = "./server/json/admin.json";
  * セッション情報を取得
  * idが指定されていない or idがjsonに無い場合は新しく発行する
  * 
- * @param {number}} id 
+ * @param {number} id 
  * @returns 
  */
 export function getSession(id) {
@@ -118,8 +118,8 @@ export function getAdminSessionId(id, pw) {
 /**
  * クイズ登録用ユーザーのニックネーム登録
  * 
- * @param {*} sessionId 
- * @param {*} name 
+ * @param {string} sessionId 
+ * @param {string} name 
  * @returns 
  */
 export function saveAdminName(sessionId, name) {
