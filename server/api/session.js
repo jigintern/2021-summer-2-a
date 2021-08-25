@@ -35,6 +35,9 @@ export function saveUserName(sessionId, name) {
     }
     let users = new JSONDB(USERS_JSON_PATH);
     let user = users.data.find(u => u.session_id == sessionId);
+    if (!user) {
+        return null;
+    }
     user.name = name;
     users.write();
     return "ok";
