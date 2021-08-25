@@ -1,6 +1,5 @@
 import { Server } from "https://js.sabae.cc/Server.js";
 import { JSONDB } from "https://js.sabae.cc/JSONDB.js";
-import { getQuizList } from "./server/getQuizList"
 
 const questions = new JSONDB("./json/questions.json");
 // const results = new JSONDB("./json/result.json")
