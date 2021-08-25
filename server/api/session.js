@@ -58,7 +58,7 @@ export function saveUserName(req) {
     if (!user) {
         return null;
     }
-    user.name = name;
+    user.name = req.name;
     users.write();
     return "ok";
 }
