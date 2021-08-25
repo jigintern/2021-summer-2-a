@@ -1,5 +1,6 @@
 import { Server } from "https://js.sabae.cc/Server.js";
 import { JSONDB } from "https://js.sabae.cc/JSONDB.js";
+import { getSample } from "./server/sample.js";
 
 const questions = new JSONDB("./server/json/questions.json");
 // const results = new JSONDB("./server/json/result.json")
@@ -7,6 +8,8 @@ const questions = new JSONDB("./server/json/questions.json");
 class QuizServer extends Server {
   api(path, req) {
     switch (path) {
+      case "/api/sample":
+        return getSample(2);
       case "/api/start":
       case "/api/getQuizList": // クイズ一覧を取得
         
