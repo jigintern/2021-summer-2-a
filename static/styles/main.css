@@ -13,12 +13,13 @@ main {
 footer {
   border: 3px solid purple;
 }
-button.choice {
-  border: 4px solid black;
-  padding: 5%;
-  width: 100%;
-  margin-bottom: 3%;
+button{
   border: 10px outset #53c2be;
+}
+button.choice {
+  padding: 5%;
+  width: 50%;
+  margin-bottom: 0%;
 }
 button#exit {
   width: 30vh;
@@ -29,7 +30,7 @@ button#submitButton {
   height: 10vh;
 }
 div#choicesContainer {
-  text-align: center;
+  text-align: left;
   border: 2px solid green;
   margin-top: 30%;
 }
