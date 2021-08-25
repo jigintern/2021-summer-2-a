@@ -1,28 +1,26 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="https://unpkg.com/sakura.css/css/sakura.css" type="text/css" />
 </head>
+
 <body>
     <header>
-        <button　class="backToTop">トップへ戻る</button>
+        <button id="exit">トップへ戻る</button>
     </header>
-    <div id="quizText">
-        <div>問題文</div>
-    </div>
+    <main>
+        <div id="quizStatement"> </div>
+        <div id="choicesContainer"> </div>
 
-    <div id="ansBtnContainer">
-        <button class="ansBtn">o</button>
-        <button class="ansBtn">x</button>
-    </div>
-
-    <div>
-        <button class="submitBtn">決定</button>
-    </div>
-
-    <script src="./main.html"></script>
-    <script src="./result.html"></script> 
+        <div>
+            <button id="submitButton">決定</button>
+        </div>
+    </main>
+    <script type="module" src="src/main.js"></script>
 </body>
+
 </html>
