@@ -1,12 +1,10 @@
 import { fetchJSON } from "https://js.sabae.cc/fetchJSON.js";
+import {
+  removeElement,
+  getElement
+} from './utils/util.js'
 
 let state = new Map();
-
-const removeElement = (selector) => {
-  document.querySelector(selector).innerHTML = "";
-};
-
-const getElement = (id) => document.getElementById(id);
 
 const setQuizList = (data) => {
   data.map((a, i) => {
@@ -59,12 +57,17 @@ const createChoices = ({ choices }) => {
   return;
 };
 
+const createModal = () => {
+  const modalEl = getElement("modal")
+}
+
 const endOfGame = () => {
 
 }
 
 window.onload = async () => {
   setQuizList(await fetchJSON("/api/getQuizList"));
+  // createModal()
   initAnsList(initAnsList)
   setCurrentQuiz(getQuizList()[0])
   loopQuiz(getCurrentQuiz())
