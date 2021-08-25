@@ -1,47 +1,42 @@
 import { fetchJSON } from "https://js.sabae.cc/fetchJSON.js";
 
-let state =  new Map()
+let state = new Map();
+
+const removeElement = (selector) => {
+  document.querySelector(selector).innerHTML = "";
+};
+
+const getElement = (id) => document.getElementById(id);
 
 const setQuizList = (data) => {
   data.map((a, i) => {
     if (i !== data.length - 1) {
-      a.nextId = data[i + 1]["quizId"]
+      a.nextId = data[i + 1]["quizId"];
     }
-    return a
-  })
-  state.set("quizList", data)
+    return a;
+  });
+  state.set("quizList", data);
 };
 
-const getQuizList = () => state.get("quizList")
-const setCurrentChoice = (data) => state.set("currentChoice", data)
-const getCurrentChoice = () => state.get("currentChoice")
+const getQuizList = () => state.get("quizList");
+const setCurrentChoice = (data) => state.set("currentChoice", data);
+const getCurrentChoice = () => state.get("currentChoice");
 const setCurrentQuiz = (data) => state.set("currentQuiz", data);
-const getCurrentQuiz = () => state.get("currentQuiz")
-
-const getElement = (id) => document.getElementById(id);
-
-const nowData = {
-  quizList: [],
-  quizId: getCurrentQuiz(),
-  choiceId: getCurrentChoice(),
-}
+const getCurrentQuiz = () => state.get("currentQuiz");
 
 const createChoices = ({ choices }) => {
-  console.log(choices)
   choices.map(({ text, id }) => {
     const choiceBtn = document.createElement("button");
     const crrElId = `choices_${id}`;
 
     choiceBtn.setAttribute("id", crrElId);
-    choiceBtn.setAttribute("className", "choice");
+    choiceBtn.setAttribute("class", "choice");
     choiceBtn.innerText = text;
 
-    getElement("choicesContainer")
-      .appendChild(choiceBtn);
+    getElement("choicesContainer").appendChild(choiceBtn);
 
-    const nowChoiceBtn = getElement(crrElId)
+    const nowChoiceBtn = getElement(crrElId);
     nowChoiceBtn.addEventListener("click", () => {
-      // 現在の選択肢のID
       setCurrentChoice(id);
     });
   });
@@ -50,32 +45,25 @@ const createChoices = ({ choices }) => {
 };
 
 window.onload = async () => {
-  setQuizList(await fetchJSON("/api/getQuizList"))
-  console.log(getQuizList())
-  setCurrentQuiz(getQuizList()[0])
-  loopQuiz(getCurrentQuiz())
-}
-
-const clearDatas = () => {
-  document.querySelector("#choicesContainer").innerHTML = ''
-}
+  setQuizList(await fetchJSON("/api/getQuizList"));
+  setCurrentQuiz(getQuizList()[0]);
+  loopQuiz(getCurrentQuiz());
+};
 
 const loopQuiz = (nowQuiz) => {
   // 次のゲームへすすむ処理
-  createChoices(nowQuiz)
-  console.log("asdfadfas", nowQuiz)
+  createChoices(nowQuiz);
 
-  const submitButton = getElement("submitButton")
+  const submitButton = getElement("submitButton");
 
   submitButton.addEventListener("click", () => {
-    nowData.answerId = getCurrentChoice()
-    const nextId = nowQuiz.nextId
-    const nextQuiz = getQuizList().find((a) => a.quizId === nextId)
+    const nextId = nowQuiz.nextId;
+    const nextQuiz = getQuizList().find((a) => a.quizId === nextId);
     if (nextQuiz) {
-      clearDatas()
-      loopQuiz(nextQuiz)
+      removeElement("#choicesContainer");
+      loopQuiz(nextQuiz);
     } else {
-      endOfGame()
+      endOfGame();
     }
-  })
-}
+  });
+};
