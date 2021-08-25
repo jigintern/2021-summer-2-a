@@ -1,19 +1,24 @@
 body {
   display: flex;
   flex-flow: column;
-  min-height: 95vh;
+  min-height: 100vh;
   border: 1px solid red;
   background-color: aliceblue;
 }
 main {
+  flex-flow: column;
   border: 1px solid blue;
   flex: 1;
 }
 footer {
   border: 3px solid purple;
 }
-button{
-    padding: 5%;
+button.choice {
+  border: 4px solid black;
+  padding: 5%;
+  width: 100%;
+  margin-bottom: 3%;
+  border: 10px outset #53c2be;
 }
 button#exit {
   width: 30vh;
@@ -24,7 +29,7 @@ button#submitButton {
   height: 10vh;
 }
 div#choicesContainer {
-  position: relative;
+  text-align: center;
   border: 2px solid green;
   margin-top: 30%;
 }
