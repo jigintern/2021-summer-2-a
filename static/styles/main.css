@@ -1,7 +1,7 @@
 body {
   display: flex;
   flex-flow: column;
-  min-height: 95vh;
+  min-height: 80vh;
   border: 1px solid red;
   background-color: paleturquoise;
 }
@@ -19,15 +19,18 @@ button{
 button.choice {
   padding: 5%;
   width: 50%;
+  height: 10vh;
+  min-height: 4em;
   margin-bottom: 0%;
 }
 button#exit {
-  width: 30vh;
-  height: 5vh;
+  width: 10em;
+  height: 4em;
 }
 button#submitButton {
   width: 100%;
   height: 10vh;
+  min-height: 4em;
 }
 div#choicesContainer {
   text-align: left;
