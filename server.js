@@ -45,4 +45,4 @@ class QuizServer extends Server {
   }
 }
 
-new QuizServer(8001);
+new QuizServer(8886);
