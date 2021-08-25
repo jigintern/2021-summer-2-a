@@ -10,23 +10,19 @@
 </head>
 
 <body>
-  <div class="title">
-    <h1>ネットリテラシークイズ<br />中学生版</h1>
-  </div>
-  <div class="topButtons">
-    <div class="buttonStart">
-      <button id="start" >始める</button>
-    </div>
 
-    <div class="buttonOption">
-      <button id="option">オプション</button>
-    </div>
-  </div>
-  <script src="./src/top.js"></script>
-  <script src="./main.html"></script>
-  <script src="./result.html"></script>
-  <script src="./option.html"></script>
-  
+  <button id="btn">ぼたん</button>  
+
+
+  <script type="text/javascript">
+    document.getElementById("btn").addEventListener("click",  () => {
+      console.log("start");
+      fetch("/api/tests?s=hogehoge&d=ddddddd")
+        .then(res => res.json())
+        .then(data => console.log(data));
+    });
+  </script>
+
 </body>
 
 </html>
