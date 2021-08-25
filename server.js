@@ -1,5 +1,6 @@
 import { Server } from "https://js.sabae.cc/Server.js";
 import { JSONDB } from "https://js.sabae.cc/JSONDB.js";
+import { POSTquestions } from "./server/api/POSTquestions.js";
 
 const questions = new JSONDB("./server/json/questions.json");
 // const results = new JSONDB("./server/json/result.json")
@@ -34,6 +35,8 @@ class QuizServer extends Server {
       // 算出したスコアをresultdbに書き込み
       case "/api/getRanking":
         // resultからソートしたデータをフロントへ返す
+      case "/api/POST":
+        POSTquestions();
     }
   }
 }
