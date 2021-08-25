@@ -1,6 +1,38 @@
-body{
-    background-color: aliceblue;
+body {
+  display: flex;
+  flex-flow: column;
+  min-height: 95vh;
+  border: 1px solid red;
+  background-color: aliceblue;
+}
+main {
+  border: 1px solid blue;
+  flex: 1;
+}
+footer {
+  border: 3px solid purple;
 }
 button{
-    width: 200px;
+    padding: 5%;
+}
+button#exit {
+  width: 200px;
+  height: 100px;
+}
+button#submitButton {
+  width: 100%;
+  height: 100px;
+}
+div#choicesContainer {
+  position: relative;
+  border: 2px solid green;
+  margin-top: 30%;
+}
+div#submitButtonContainer {
+  border: 2px solid #444;
+  text-align: center;
+}
+div#exitContainer {
+  position: absolute;
+  border: 2px solid #444;
 }
