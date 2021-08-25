@@ -57,10 +57,6 @@ const createChoices = ({ choices }) => {
   return;
 };
 
-const createModal = () => {
-  const modalEl = getElement("modal")
-}
-
 const endOfGame = () => {
 
 }
