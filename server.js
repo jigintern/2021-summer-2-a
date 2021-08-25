@@ -1,8 +1,8 @@
 import { Server } from "https://js.sabae.cc/Server.js";
 import { JSONDB } from "https://js.sabae.cc/JSONDB.js";
 
-const questions = new JSONDB("./json/questions.json");
-// const results = new JSONDB("./json/result.json")
+const questions = new JSONDB("./server/json/questions.json");
+// const results = new JSONDB("./server/json/result.json")
 
 class QuizServer extends Server {
   api(path, req) {
