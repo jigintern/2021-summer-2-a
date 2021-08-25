@@ -15,6 +15,7 @@ body {
 button {
     width: 200px;
     height: 120px;
+    border: 10px outset #53c2be;
 }
 .result_button {
     margin-top: auto;

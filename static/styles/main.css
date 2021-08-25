@@ -1,9 +1,9 @@
 body {
   display: flex;
   flex-flow: column;
-  min-height: 100vh;
+  min-height: 95vh;
   border: 1px solid red;
-  background-color: aliceblue;
+  background-color: paleturquoise;
 }
 main {
   flex-flow: column;
