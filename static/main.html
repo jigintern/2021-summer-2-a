@@ -1,27 +1,34 @@
 <!DOCTYPE html>
 <html lang="ja">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="https://unpkg.com/sakura.css/css/sakura.css" type="text/css" />
-</head>
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/sakura.css/css/sakura.css"
+      type="text/css"
+    />
+    <link rel="stylesheet" href="./styles/main.css" />
+  </head>
 
-<body>
+  <body>
     <header>
+      <div id="exitContainer">
         <button id="exit">トップへ戻る</button>
+      </div>
     </header>
-    <main>
-        <div id="quizStatement">oooooo</div>
-        <div id="choicesContainer">
-        </div>
 
-        <div>
-            <button id="submitButton">決定</button>
-        </div>
+    <main>
+      <div id="quizStatement"></div>
+      <div id="choicesContainer"></div>
     </main>
     <script type="module" src="src/main.js"></script>
-</body>
-
+    <div id="bottom"></div>
+  </body>
+  <footer>
+    <div id="submitButtonContainer">
+      <button id="submitButton">決定</button>
+    </div>
+  </footer>
 </html>
