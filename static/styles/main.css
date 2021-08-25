@@ -16,12 +16,12 @@ button{
     padding: 5%;
 }
 button#exit {
-  width: 200px;
-  height: 100px;
+  width: 30vh;
+  height: 5vh;
 }
 button#submitButton {
   width: 100%;
-  height: 100px;
+  height: 10vh;
 }
 div#choicesContainer {
   position: relative;
