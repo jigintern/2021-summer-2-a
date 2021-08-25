@@ -9,7 +9,6 @@ class QuizServer extends Server {
     switch (path) {
       case "/api/start":
       case "/api/getQuizList": // クイズ一覧を取得
-        getQuizList()
         
         // getQuizList()
         // DBからクイズ一覧を取得
