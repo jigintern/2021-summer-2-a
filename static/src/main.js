@@ -51,7 +51,6 @@ window.onload = async () => {
 };
 
 const loopQuiz = (nowQuiz) => {
-  // 次のゲームへすすむ処理
   createChoices(nowQuiz);
 
   const submitButton = getElement("submitButton");
