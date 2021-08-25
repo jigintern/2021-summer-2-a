@@ -55,7 +55,7 @@ export function saveUserName(req) {
         return null;
     }
     let users = new JSONDB(USERS_JSON_PATH);
-    let user = users.data.find(u => u.session_id == sessionId);
+    let user = users.data.find(u => u.session_id == req.session);
     if (!user) {
         return null;
     }
