@@ -17,7 +17,6 @@ export function getSession(id) {
         };
         users.data.push(user);
         users.write();
-        return user.session_id;
     }
     return user.session_id;
 }
