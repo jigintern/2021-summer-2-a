@@ -1,0 +1,84 @@
+{
+  "quizData": [
+    {
+      "quizId": 1,
+      "statement": "aaaaaaaaaaaaaaaaa",
+      "choices": [
+        {
+          "id": 1,
+          "text": "O"
+        },
+        {
+          "id": 2,
+          "text": "X"
+        }
+      ],
+      "answerId": 1,
+      "explanation": "aaaaaaaaa"
+    },
+    {
+      "quizId": 2,
+      "statement": "リンゴを英語にすると・・・？",
+      "choices": [
+        {
+          "text": "aple",
+          "ansId": 1
+        },
+        {
+          "text": "apple",
+          "ansd": 2
+        },
+        {
+          "text": "aple",
+          "id": 3
+        }
+      ],
+      "answersId": 2,
+      "explanation": "aaa"
+    },
+    {
+      "id": 3,
+      "statement": "Literacy-3",
+      "choices": [
+        {
+          "id": 1,
+          "text": "Fizz"
+        },
+        {
+          "id": 2,
+          "text": "Bizz"
+        },
+        {
+          "id": 3,
+          "text": "FizzBizz"
+        }
+      ],
+      "answersId": 2,
+      "explanation": "aaa"
+    },
+    {
+      "id": 4,
+      "statement": "Literacy-2",
+      "choices": [
+        {
+          "id": 1,
+          "text": "True"
+        },
+        {
+          "id": 2,
+          "text": "False"
+        },
+        {
+          "id": 3,
+          "text": "NULL"
+        },
+        {
+          "id": 4,
+          "text": "undef"
+        }
+      ],
+      "answersId": 2,
+      "explanation": "aaa"
+    }
+  ]
+}
