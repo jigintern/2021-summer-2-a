@@ -81,16 +81,17 @@ export function registAdmin(id, pw) {
     if (admin) {
         return null;
     }
+    const adSessionId = createAdminSessionId();
     admin = {
         id: id,
         pw: pw,
         name: null,
-        session_id: null
+        session_id: adSessionId
     }
     admins.data.push(admin);
     admins.write();
 
-    return id;
+    return adSessionId;
 }
 
 /**
@@ -110,7 +111,7 @@ export function getAdminSessionId(id, pw) {
     if (!admin) {
         return null;
     }
-    admin.session_id = "ad-" + Math.random();
+    admin.session_id = createAdminSessionId();
     admins.write();
     return admin.session_id;
 }
@@ -155,4 +156,8 @@ export function getAdminId(adminSessionId) {
         return null;
     }
     return admin.id;
+}
+
+function createAdminSessionId() {
+    return "ad-" + Math.random();
 }
