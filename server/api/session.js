@@ -2,6 +2,13 @@ import { JSONDB } from "https://js.sabae.cc/JSONDB.js";
 
 const USERS_JSON_PATH = "./server/json/users.json";
 
+/**
+ * セッション情報を取得
+ * idが指定されていない or idがjsonに無い場合は新しく発行する
+ * 
+ * @param {number}} id 
+ * @returns 
+ */
 export function getSession(id) {
     let users = new JSONDB(USERS_JSON_PATH);
 
@@ -21,6 +28,12 @@ export function getSession(id) {
     return user.session_id;
 }
 
+/**
+ * ユーザーを取得
+ * 
+ * @param {number} sessionId 
+ * @returns 
+ */
 export function getUser(sessionId) {
     if (!sessionId) {
         return null;
@@ -29,8 +42,15 @@ export function getUser(sessionId) {
     return users.data.find(u => u.session_id == sessionId);
 }
 
-export function saveUserName(sessionId, name) {
-    if (!sessionId || !name) {
+/**
+ * ニックネームを保存
+ * req.sessionとreq.nameは必須
+ * 
+ * @param {any} req 
+ * @returns 
+ */
+export function saveUserName(req) {
+    if (!req.session || !req.name) {
         return null;
     }
     let users = new JSONDB(USERS_JSON_PATH);

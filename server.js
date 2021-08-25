@@ -51,7 +51,7 @@ class QuizServer extends Server {
         return getUser(req.session);
       // ユーザー名を設定
       case "/api/saveUserName":
-        return saveUserName(req.session, req.name);
+        return saveUserName(req);
     }
   }
 }
