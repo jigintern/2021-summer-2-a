@@ -22,22 +22,22 @@
       "choices": [
         {
           "text": "aple",
-          "ansId": 1
+          "id": 1
         },
         {
           "text": "apple",
-          "ansd": 2
+          "id": 2
         },
         {
           "text": "aple",
           "id": 3
         }
       ],
-      "answersId": 2,
+      "answersId": 3,
       "explanation": "aaa"
     },
     {
-      "id": 3,
+      "quizId": 3,
       "statement": "Literacy-3",
       "choices": [
         {
@@ -53,11 +53,11 @@
           "text": "FizzBizz"
         }
       ],
-      "answersId": 2,
+      "answersId": 5,
       "explanation": "aaa"
     },
     {
-      "id": 4,
+      "quizId": 4,
       "statement": "Literacy-2",
       "choices": [
         {
