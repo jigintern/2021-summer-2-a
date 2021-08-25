@@ -1,6 +1,7 @@
 import { Server } from "https://js.sabae.cc/Server.js";
 import { JSONDB } from "https://js.sabae.cc/JSONDB.js";
 import { getQuestion } from "./server/api/getQuestion.js";
+import { GETanswer } from "./server/api/GETanswer.js";
 
 const questions = new JSONDB("./server/json/questions.json");
 // const results = new JSONDB("./server/json/result.json")
@@ -26,6 +27,9 @@ class QuizServer extends Server {
         // 回答をのぞいた問題リストを返す。
         return currentQuestions;
       case "/api/getAnswer": // クライアントから送られた回答が正解かどうかを返す。
+        const answer = GETanswer(1);
+        console.log(answer);
+        return answer;
       case "/api/getAnswers": // 回答一覧を取得
         const ansList = questions.data;
         return ansList;

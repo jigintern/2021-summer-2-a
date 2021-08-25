@@ -4,5 +4,5 @@ start.addEventListener("click", () => {
   location.href = "../main.html";
 }, false);
 option.addEventListener("click", () => {
-  location.href = "../result.html";
+  location.href = "../option.html";
 });
