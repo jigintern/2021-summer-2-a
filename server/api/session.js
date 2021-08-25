@@ -1,6 +1,6 @@
 import { JSONDB } from "https://js.sabae.cc/JSONDB.js";
 
-const USERS_JSON_PATH = "./server/json/users.js";
+const USERS_JSON_PATH = "./server/json/users.json";
 
 export function getSession(id) {
     let users = new JSONDB(USERS_JSON_PATH);
@@ -37,7 +37,6 @@ export function saveUserName(sessionId, name) {
     let users = new JSONDB(USERS_JSON_PATH);
     let user = users.data.find(u => u.session_id == sessionId);
     user.name = name;
-    users.data.push(user);
     users.write();
     return "ok";
 }
