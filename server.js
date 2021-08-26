@@ -25,7 +25,10 @@ class QuizServer extends Server {
       case "/api/getRanking":
         // resultからソートしたデータをフロントへ返す
       case "/api/getQuestion":
-        return getQuestion(req.quizNum);  //returnを忘れずに！！
+        let user_arg={
+          "sessionId":"025110"
+        }
+        return getQuestion(user_arg);  //returnを忘れずに！！
       // セッション取得
       case "/api/getSessionId":
         return getSessionId(req.session);
