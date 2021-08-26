@@ -1,32 +1,40 @@
 <html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
 
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width" />
+    <title>hogehoge</title>
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/sakura.css/css/sakura.css"
+      type="text/css"
+    />
+    <link rel="stylesheet" href="./styles/index.css" />
+  </head>
 
-  <title>hogehoge</title>
-  <link rel="stylesheet" href="https://unpkg.com/sakura.css/css/sakura.css" type="text/css" />
-  <link rel="stylesheet" href="./styles/index.css"/>
-</head>
-
-<body>
-  <div class="title">
-    <h1>ネットリテラシークイズ<br />中学生版</h1>
-  </div>
-  <div class="topButtons">
-    <div class="buttonStart">
-      <button id="start" >始める</button>
+  <body>
+    <div class="title">
+      <h1>ネットリテラシークイズ<br />中学生版</h1>
     </div>
-
-    <div class="buttonOption">
-      <button id="option">オプション</button>
+    <div id="nicknames">
+      <div id="inputs">
+        <div>ニックネーム</div>
+        <input type="text" id="inputNickname" value="" />
+        <p id="inputButtonClicked"></p>
+      </div>
     </div>
-  </div>
-  <script src="./src/index.js"></script>
-  <a href="./main.html"></a>
-  <a href="./result.html"></a>
-  <a href="./option.html"></a>
-  
-</body>
+    <div class="topButtons">
+      <div class="buttonStart">
+        <button id="start">始める</button>
+      </div>
 
+      <div class="buttonOption">
+        <button id="option">オプション</button>
+      </div>
+    </div>
+    <script src="./src/index.js"></script>
+    <a href="./main.html"></a>
+    <a href="./result.html"></a>
+    <a href="./option.html"></a>
+  </body>
 </html>
