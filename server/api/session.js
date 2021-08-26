@@ -10,7 +10,7 @@ const ADMIN_JSON_PATH = "./server/json/admin.json";
  * @param {number} id 
  * @returns 
  */
-export function getSession(id) {
+export function getSessionId(id) {
     let users = new JSONDB(USERS_JSON_PATH);
 
     let user;
