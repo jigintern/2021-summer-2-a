@@ -14,15 +14,19 @@ import { JSONDB } from "https://js.sabae.cc/JSONDB.js";
 }
 */
 export function saveUserSetting(json) {
-    const save_json=new JSONDB("./server/json/user_setting.json");
-    let check=save_json.data.user_setting.find(ele=>ele.sessionId==json.sessionId)
+    let save_json=new JSONDB("./server/json/user_setting.json");
+    let check=save_json.data.find(ele=>ele.sessionId==json.sessionId)
     if (check) {
         //同じユーザーID→上書き
-        let index=save_json.data.user_setting.indexOf(check);
-        save_json.data.user_setting[index].question_volume=json.question_volume;
+        check.question_volume = json.question_volume;
         save_json.write();
     } else {
-        save_json.data.user_setting.push(json);
+        let newSetting = {
+            sessionId: json.sessionId,
+            question_volume: json.question_volume
+        }
+
+        save_json.data.push(newSetting);
         save_json.write();
     }
 }

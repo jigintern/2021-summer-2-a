@@ -28,14 +28,11 @@ class QuizServer extends Server {
         return setting;
       //設定を保持する
       case "/api/saveUserSetting":
-          return saveUserSetting(req);
+        return saveUserSetting(req);
       
       //問題を指定された問題数分取り出す
       case "/api/getQuestion":
-        let user_arg={
-          "sessionId":"025110"
-        }
-        return getQuestion(user_arg);  //returnを忘れずに！！
+        return getQuestion(req.session);  //returnを忘れずに！！
       
       case "/api/getAnswer": // クライアントから送られた回答が正解かどうかを返す。
         const answer = getAnswer(req.quizId);
