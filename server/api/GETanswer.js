@@ -1,7 +1,7 @@
 import { JSONDB } from "https://js.sabae.cc/JSONDB.js";
 let json = new JSONDB("./server/json/questions.json");
 
-const getAnswer = ({ quizId }) => {
+const GETanswer = (quizId) => {
 
     const l = json.data.quizData.length;//クイズデータの要素数
     
@@ -18,4 +18,4 @@ const getAnswer = ({ quizId }) => {
 
 }
 
-export { getAnswer }
+export { GETanswer }
