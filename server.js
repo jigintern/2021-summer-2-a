@@ -47,22 +47,7 @@ class QuizServer extends Server {
       
       // ユーザーの解答結果を保存する。
       case "/api/saveAnswer":
-        let ans_argument={
-          "answers":[
-              {
-                  "quizId":3,
-                  "userans":"asdvasdvsdfassf"
-              },
-              {
-                  "quizId":2,
-                  "userans":"vaswefefsfdfs"
-              }
-          ]
-        }
-        let user_arugument={
-          "userId":"00204502040"
-        }
-        return saveAnswer(user_arugument,ans_argument);
+        return saveAnswer(req.session, req.answers);
       
       case "/api/postResult": // 今回の結果をサーバへポスト
         // フロントからPOSTされた結果からスコアを算出
