@@ -1,12 +1,19 @@
 import { JSONDB } from "https://js.sabae.cc/JSONDB.js";
-import { fetchJSON } from "https://js.sabae.cc/fetchJSON.js";
+/**
+ * ユーザーIDとユーザーの解答状況をサーバー側に保存するAPI。
+ * 
+ * 引数
+ * @argument {json} user_json ユーザーIDを格納しているJSON
+ * @argument {json} data_json クイズIDとユーザーの解答結果を保存しているJSON 
+ */
 //*もらってくるデータの仮定
 /*
+user_json
 {
     "userId":"00204502040"
     ※userの名前はif文とかの判定が難しいので考えない。
 }
-
+data_json
 {
     "answers":[
         {

@@ -7,6 +7,7 @@ import { saveAnswer } from "./server/api/saveAnswer.js";
 import { getComments } from "./server/api/getComments.js";
 import { sample } from "./server/api/sample.js";
 import { saveUserSetting } from "./server/api/saveUserSetting.js";
+import { getUserSetting } from "./server/api/getUserSetting.js";
 const questions = new JSONDB("./server/json/questions.json");
 // const results = new JSONDB("./server/json/result.json")
 
@@ -93,6 +94,10 @@ class QuizServer extends Server {
           "question_volume":6
         }
         return saveUserSetting(saveuser_arg);
+      //sessionを受け取って設定を返す
+      case "/api/getUserSetting":
+        const setting = getUserSetting("025110");
+        return setting;
     }
   }
 }
