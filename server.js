@@ -31,7 +31,7 @@ class QuizServer extends Server {
         // 回答をのぞいた問題リストを返す。
         return currentQuestions;
       case "/api/getAnswer": // クライアントから送られた回答が正解かどうかを返す。
-        const answer = getÁnswer(req.quizId);
+        const answer = getAnswer(req.quizId);
         return answer;
       case "/api/getAnswers": // 回答一覧を取得
         const ansList = questions.data;
