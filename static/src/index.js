@@ -1,11 +1,10 @@
 import { fetchJSON } from "https://js.sabae.cc/fetchJSON.js";
+import { getSessionId } from './utils/util.js'
 
-let session_id = localStorage.getItem("session_id");
-console.log(session_id);
+let session_id = getSessionId();
 session_id = await fetchJSON("/api/getSessionId", { session: session_id });
 session_id = String(session_id);
 localStorage.setItem("session_id", session_id);
-console.log(session_id);
 
 let start = document.getElementById("start");
 let option = document.getElementById("option");

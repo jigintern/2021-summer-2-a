@@ -2,6 +2,7 @@ import { fetchJSON } from "https://js.sabae.cc/fetchJSON.js";
 import {
   removeElement,
   getElement,
+  getSessionId,
 } from './utils/util.js'
 
 let state = new Map();
@@ -57,7 +58,7 @@ const createChoices = ({ choices }) => {
 };
 
 const end = async () => {
-  const nowSession = localStorage.getItem("session_id")
+  const nowSession = getSessionId()
   const answers = getAnswers()
   const a = await fetchJSON("/api/saveAnswer", {
     session: nowSession,
@@ -67,7 +68,7 @@ const end = async () => {
 }
 
 window.onload = async () => {
-  const nowSession = localStorage.getItem("session_id")
+  const nowSession = getSessionId()
   setQuizList(await fetchJSON("/api/getQuestion", { session: nowSession }));
   initAnsList(initAnsList)
   setCurrentQuiz(getQuizList()[0])

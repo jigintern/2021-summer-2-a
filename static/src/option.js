@@ -1,5 +1,6 @@
 import { fetchJSON } from "https://js.sabae.cc/fetchJSON.js";
 import { getSessionId } from './utils/util.js'
+
 let input = document.getElementById("inputQuestion");
 let exit = document.getElementById("exit");
 let fiveButton=document.getElementById("fiveQuestion");
