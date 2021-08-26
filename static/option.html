@@ -1,11 +1,27 @@
 <!DOCTYPE html>
 <html lang="ja">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>option</title>
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/sakura.css/css/sakura.css"
+      type="text/css"
+    />
+  </head>
+  <body>
+    <div>ニックネーム</div>
+    <input />
+    <button id="inputButton" onclick="hoge()">決定</button>
     <script src="./index.html"></script>
-</body>
+    <p id="inputButtonClicked">hoge</p>
+  </body>
+  <script>
+    function hoge() {
+      console.log("inputButton was pushed");
+      var sampleArea = document.getElementById("inputButtonClicked");
+      sampleArea.innerHTML = "適用しました";
+    }
+  </script>
 </html>
