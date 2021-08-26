@@ -45,8 +45,8 @@ class QuizServer extends Server {
       case "/api/getQuestion":
         return getQuestion(3);  //returnを忘れずに！！
       // セッション取得
-      case "/api/getSession":
-        return getSession(req.session);
+      case "/api/getSessionId":
+        return getSessionId(req.session);
       // ユーザーを取得
       case "/api/getUser":
         return getUser(req.session);
