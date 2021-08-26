@@ -1,6 +1,13 @@
 import { JSONDB } from "https://js.sabae.cc/JSONDB.js";
-import { fetchJSON } from "https://js.sabae.cc/fetchJSON.js";
-//*もらってくるデータの仮定
+/**
+ * クイズIDとユーザーの解答と正誤から評価コメントを返す関数。
+ * 
+ * 引数
+ * @argument {json} get_json クイズIDとユーザーの答えと正解の判定が入ったJSON。
+ * 返り値
+ * @param {json} comment 解答結果についてのコメント
+ */
+//*引数データの例：get_json
 /*
 {
     "key":[
@@ -18,6 +25,7 @@ import { fetchJSON } from "https://js.sabae.cc/fetchJSON.js";
     "nickname":"asdifwif"
 }
 */
+
 export function getComments(get_json) {
     // const get_json =fetchJSON("api/test");  //フロントから解答結果とニックネームのデータをもらう。
     const comment_json=new JSONDB("./server/json/comments.json");

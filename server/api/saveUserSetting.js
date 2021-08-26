@@ -1,6 +1,12 @@
 import { JSONDB } from "https://js.sabae.cc/JSONDB.js";
-//*SeesionIDとquestion_volumeをもらう。
-//*もらうデータの仮定
+/**
+ * ユーザーIDと問題数をサーバー側に保存するAPI。
+ * 
+ * 引数
+ * @argument {json} json ユーザーIDと問題数が入ったJSON。
+ */
+
+//*引数データの例:json
 /*
 {
     "sessionId":"025110",

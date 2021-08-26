@@ -1,10 +1,25 @@
 import { JSONDB } from "https://js.sabae.cc/JSONDB.js";
-//*引数のデータ
+/**
+ * ユーザーIDから指定された数の問題を返すAPI。
+ * 
+ * 引数
+ * @argument {json} user ユーザーIDのみ入ったjsonデータ。
+ * 返り値
+ * @param {json} get_question user_setting.jsonの問題量分の問題が出る。
+ * 
+ * 注意！！
+ * @function saveUserSetting ・・・user_setting.jsonの問題数(question_volume)を変更
+ *           
+ * @function getQuestion ・・・user_setting.jsonの問題数(question_volume)を調べる
+ *  ２つの関数の実行順序に気をつけてください。
+ */
+
+//*引数のデータ：user
 /*
 {
     "sessionId":"025110"
-}
- */
+} 
+*/
 
 //欲しいデータの件数→user-setting.jsonからnumとして取得
 export function getQuestion(user) {
