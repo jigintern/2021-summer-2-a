@@ -28,6 +28,9 @@ const USERS_ANSWERS_PATH = "./server/json/users_answers.json";
 //*解答を保存するAPI
 //*フロント側で解答を集計→サーバーに渡す→users_answers.jsonに保存
 export function saveAnswer(sessionId, answers) {
+    if (!sessionId || !answers) {
+        return;
+    }
     let usersAnswers = new JSONDB(USERS_ANSWERS_PATH);
     let usersAnswer = {
         user_session_id: sessionId,
@@ -37,7 +40,9 @@ export function saveAnswer(sessionId, answers) {
 
     let maxAnsCount = 0;
     usersAnswers.data.forEach(e => {
-        maxAnsCount = maxAnsCount < e.answer_count ? e.answer_count : maxAnsCount;
+        if (e.user_session_id == sessionId) {
+            maxAnsCount = maxAnsCount < e.answer_count ? e.answer_count : maxAnsCount;
+        }
     });
     usersAnswer.answer_count = ++maxAnsCount;
 
