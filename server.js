@@ -14,41 +14,41 @@ const questions = new JSONDB("./server/json/questions.json");
 class QuizServer extends Server {
   api(path, req) {
     switch (path) {
-      case "/api/getAnswer": // クライアントから送られた回答が正解かどうかを返す。
-        const answer = getAnswer(req.quizId);
-        return answer;
-      case "/api/getAnswers": // 回答一覧を取得
-        const ansList = questions.data;
-        return ansList;
-      case "/api/postResult": // 今回の結果をサーバへポスト
-        // フロントからPOSTされた結果からスコアを算出
-
-      // 算出したスコアをresultdbに書き込み
-      case "/api/getRanking":
-        // resultからソートしたデータをフロントへ返す
+      // ユーザー名を設定
+      case "/api/saveUserName":
+        return saveUserName(req);
+      
+      // セッション取得
+      case "/api/getSessionId":
+        return getSessionId(req.session);
+      
+      //sessionを受け取って設定を返す
+      case "/api/getUserSetting":
+        const setting = getUserSetting("025110");
+        return setting;
+      //設定を保持する
+      case "/api/saveUserSetting":
+        let saveuser_arg={
+          "sessionId":"912345231",
+          "question_volume":6
+        }
+          return saveUserSetting(saveuser_arg);
+      
+      //問題を指定された問題数分取り出す
       case "/api/getQuestion":
         let user_arg={
           "sessionId":"025110"
         }
         return getQuestion(user_arg);  //returnを忘れずに！！
-      // セッション取得
-      case "/api/getSessionId":
-        return getSessionId(req.session);
-      // ユーザーを取得
-      case "/api/getUser":
-        return getUser(req.session);
-      // ユーザー名を設定
-      case "/api/saveUserName":
-        return saveUserName(req);
-      // クイズ登録用ユーザーを登録
-      case "/api/registAdmin":
-        return registAdmin(req.id, req.pw);
-      // クイズ登録用ユーザーのセッションIDを取得
-      case "/api/getAdminSessionId":
-        return getAdminSessionId(req.id, req.pw);
-      // クイズ登録用ユーザーのニックネームを設定
-      case "/api/saveAdminName":
-        return saveAdminName(req.ad_session, req.name);
+      
+      case "/api/getAnswer": // クライアントから送られた回答が正解かどうかを返す。
+        const answer = getAnswer(req.quizId);
+        return answer;
+      
+      case "/api/getAnswers": // 回答一覧を取得
+        const ansList = questions.data;
+        return ansList;
+      
       // ユーザーの解答結果を保存する。
       case "/api/saveAnswer":
         let ans_argument={
@@ -67,6 +67,14 @@ class QuizServer extends Server {
           "userId":"00204502040"
         }
         return saveAnswer(user_arugument,ans_argument);
+      
+      case "/api/postResult": // 今回の結果をサーバへポスト
+        // フロントからPOSTされた結果からスコアを算出
+
+      // 算出したスコアをresultdbに書き込み
+      case "/api/getRanking":
+        // resultからソートしたデータをフロントへ返す
+      
       // ユーザーの点数状況からコメントを返す。
       case "/api/getComments":
         let argument={
@@ -85,19 +93,26 @@ class QuizServer extends Server {
             "nickname":"asdifwif"
         }
         return getComments(argument);
+      
+      // ユーザーを取得
+      case "/api/getUser":
+        return getUser(req.session);
+      
+      // クイズ登録用ユーザーを登録
+      case "/api/registAdmin":
+        return registAdmin(req.id, req.pw);
+      
+      // クイズ登録用ユーザーのセッションIDを取得
+      case "/api/getAdminSessionId":
+        return getAdminSessionId(req.id, req.pw);
+      
+      // クイズ登録用ユーザーのニックネームを設定
+      case "/api/saveAdminName":
+        return saveAdminName(req.ad_session, req.name);
+      
       // デバッグ用サンプルコードの実行。
       case "/api/sample":
         return sample({"aiueo":20});  //JSON引数が可能！！
-      case "/api/saveUserSetting":
-        let saveuser_arg={
-          "sessionId":"912345231",
-          "question_volume":6
-        }
-        return saveUserSetting(saveuser_arg);
-      //sessionを受け取って設定を返す
-      case "/api/getUserSetting":
-        const setting = getUserSetting("025110");
-        return setting;
     }
   }
 }
