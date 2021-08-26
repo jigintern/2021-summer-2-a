@@ -40,14 +40,15 @@ const initAnsList = () => state.set(
 
 const createChoices = ({ choices }) => {
   choices.map(({ text, id }) => {
+    const container = document.createElement("div")
     const choiceBtn = document.createElement("button");
     const crrElId = `choices_${id}`;
 
     choiceBtn.setAttribute("id", crrElId);
-    choiceBtn.setAttribute("class", "choice");
+    choiceBtn.setAttribute("class", "main-choice-button button_unclick");
     choiceBtn.innerText = text;
-
-    getElement("choicesContainer").appendChild(choiceBtn);
+    container.appendChild(choiceBtn)
+    getElement("choicesContainer").appendChild(container);
 
     getElement(crrElId).onclick = () => {
       setCurrentChoice(id);
