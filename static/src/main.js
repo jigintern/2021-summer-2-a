@@ -67,7 +67,8 @@ const end = async () => {
 }
 
 window.onload = async () => {
-  setQuizList(await fetchJSON("/api/getQuestion", { quizNum: 10 }));
+  const nowSession = localStorage.getItem("session_id")
+  setQuizList(await fetchJSON("/api/getQuestion", { session: nowSession }));
   initAnsList(initAnsList)
   setCurrentQuiz(getQuizList()[0])
   loopQuiz(getCurrentQuiz())
