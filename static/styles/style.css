@@ -1,0 +1,38 @@
+@charset "UTF-8";
+
+* {
+  margin: 0;    
+}
+
+body {
+  display: grid;
+  grid-template-columns: 40px auto 40px;
+  grid-template-rows: 
+    [head] 100px
+    [title] auto
+    [padding] 100px
+    [main] auto
+    [foot] 100px
+  ;
+  font-family: 'Noto Sans JP', sans-serif;
+}
+
+body > * {
+  grid-column: 2 / -2;
+}
+
+.head {
+  grid-row: head;
+}
+.title {
+  grid-row: title;
+}
+.padding {
+  grid-row: padding;
+}
+.main {
+  grid-row: main;
+}
+.foot {
+  grid-row: foot;
+}
