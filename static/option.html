@@ -10,22 +10,15 @@
       type="text/css"
     />
   </head>
+  <script src="src/option.js" type="module"></script>
   <body>
-    <button id="exit" onclick="location.href='./index.html'">トップへ戻る</button>
-    <div>ニックネーム</div>
-    <input type="text" id=inputNickname value=""/>
-    <button id="inputButton" onclick="changeNickname()">決定</button>
-    <p id="inputButtonClicked"></p>
-    <p id="recentNickname">現在の名前:登録されていません</p>
-
+      <button id="exit">トップへ戻る</button>
     <div>問題数</div>
     <input disabled="disabled" id=inputQuestion value="5"/><br />
-    <button id="fiveQuestion" onclick="question(5)">5</button>
-    <button id="tenQuestion" onclick="question(10)">10</button>
-    <button id="twentyQuestion" onclick="question(20)">20</button>
+    <button id="fiveQuestion">5</button>
+    <button id="tenQuestion">10</button>
+    <button id="twentyQuestion" >20</button>
     
   </body>
-  <script src="src/option.js">
 
-  </script>
 </html>
