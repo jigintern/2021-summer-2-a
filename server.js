@@ -3,7 +3,7 @@ import { JSONDB } from "https://js.sabae.cc/JSONDB.js";
 import { getQuestion } from "./server/api/getQuestion.js";
 import { getAnswer } from "./server/api/getAnswer.js";
 import { getSessionId, getUser, saveUserName, registAdmin, getAdminSessionId, saveAdminName } from "./server/api/session.js";
-import { saveAnswer } from "./server/api/saveAnswer.js";
+import { saveAnswer, getUserLatestAnswer } from "./server/api/userAnswer.js";
 import { getComments } from "./server/api/getComments.js";
 import { sample } from "./server/api/sample.js";
 import { saveUserSetting } from "./server/api/saveUserSetting.js";
@@ -48,7 +48,9 @@ class QuizServer extends Server {
       // ユーザーの解答結果を保存する。
       case "/api/saveAnswer":
         return saveAnswer(req.session, req.answers);
-      
+      // ユーザーの最新の解答結果を返す。
+      case "/api/getUsersLatestAnswer":
+          return getUserLatestAnswer(req.session);
       case "/api/postResult": // 今回の結果をサーバへポスト
         // フロントからPOSTされた結果からスコアを算出
 
