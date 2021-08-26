@@ -27,3 +27,11 @@ function changeNickname() {
   } else {
   }
 }
+function start(){
+  let input = document.getElementById("inputNickname");
+  if(input.value==""){
+
+  }else{
+    
+  }
+}
