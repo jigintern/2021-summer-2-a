@@ -10,6 +10,8 @@ const setQuizList = (data) => {
   data.map((a, i) => {
     if (i !== data.length - 1) {
       a.nextId = data[i + 1]["quizId"];
+    } else {
+      a.nextId = 999
     }
     return a;
   });
@@ -58,18 +60,19 @@ const createChoices = ({ choices }) => {
 };
 
 const endOfGame = () => {
-
+  consolelog(getAnswers())
+  location.href = './result.html'
 }
 
 window.onload = async () => {
   setQuizList(await fetchJSON("/api/getQuizList"));
-  // createModal()
   initAnsList(initAnsList)
   setCurrentQuiz(getQuizList()[0])
   loopQuiz(getCurrentQuiz())
 };
 
 const loopQuiz = (nowQuiz) => {
+  submitButton.setAttribute("disabled")
   createChoices(nowQuiz);
 
   const submitButton = getElement("submitButton");
@@ -83,16 +86,27 @@ const loopQuiz = (nowQuiz) => {
     fetchJSON("/api/getAnswer", {
       quizId: nowQuiz.quizId
     }).then((d) => {
-      //　回答、解説画面
-      console.log(d)
+      submitButton.setAttribute("disabled", "disabled")
+
+      const { text } = nowQuiz.choices.find(a => a.id === d.answerId)
+      const nextId = nowQuiz.nextId
+      const nextQuiz = getQuizList().find((a) => a.quizId === nextId);
+
+      getElement("explanation").innerText = d.explanation
+      getElement("answer").innerText = text
+      getElement("nextQuiz").onclick = () => {
+        removeElement("#choicesContainer")
+        removeElement("#explanation")
+        removeElement("#answer")
+        loopQuiz(nextQuiz)
+      }
     })
 
-    const nextId = nowQuiz.nextId;
-    const nextQuiz = getQuizList().find((a) => a.quizId === nextId);
     if (nextQuiz) {
       removeElement("#choicesContainer");
       loopQuiz(nextQuiz);
-    } else {
+    }
+    if (nextQuiz === 999){
       endOfGame();
     }
   };
