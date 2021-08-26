@@ -1,12 +1,4 @@
 import { JSONDB } from "https://js.sabae.cc/JSONDB.js";
-//*SeesionIDとquestion_volumeをもらう。
-//*もらうデータの仮定
-/*
-{
-    "sessionId":"025110",
-    "question_volume":10
-}
-*/
 //入力：sessionID
 //出力：ユーザーの設定を返す。{"sessionId":"025110","question_volume":10}
 export function getUserSetting(json) {
