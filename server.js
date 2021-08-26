@@ -12,23 +12,6 @@ const questions = new JSONDB("./server/json/questions.json");
 class QuizServer extends Server {
   api(path, req) {
     switch (path) {
-      case "/api/start":
-      case "/api/getQuizList": // クイズ一覧を取得
-        
-        // getQuizList()
-        // DBからクイズ一覧を取得
-        const { quizData } = questions.data;
-
-        // 問題から回答のみ削除
-        const currentQuestions = quizData.map((data) => {
-          delete data["answerId"];
-          return data;
-        });
-        // 順番をランダムにする
-        // 一定の問題数に絞る
-
-        // 回答をのぞいた問題リストを返す。
-        return currentQuestions;
       case "/api/getAnswer": // クライアントから送られた回答が正解かどうかを返す。
         const answer = getAnswer(req.quizId);
         return answer;
@@ -42,7 +25,7 @@ class QuizServer extends Server {
       case "/api/getRanking":
         // resultからソートしたデータをフロントへ返す
       case "/api/getQuestion":
-        return getQuestion(3);  //returnを忘れずに！！
+        return getQuestion(req.quizNum);  //returnを忘れずに！！
       // セッション取得
       case "/api/getSessionId":
         return getSessionId(req.session);
