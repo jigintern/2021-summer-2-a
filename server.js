@@ -6,6 +6,7 @@ import { getSessionId, getUser, saveUserName, registAdmin, getAdminSessionId, sa
 import { saveAnswer } from "./server/api/saveAnswer.js";
 import { getComments } from "./server/api/getComments.js";
 import { sample } from "./server/api/sample.js";
+import { saveUserSetting } from "./server/api/saveUserSetting.js";
 const questions = new JSONDB("./server/json/questions.json");
 // const results = new JSONDB("./server/json/result.json")
 
@@ -86,6 +87,12 @@ class QuizServer extends Server {
       // デバッグ用サンプルコードの実行。
       case "/api/sample":
         return sample({"aiueo":20});  //JSON引数が可能！！
+      case "/api/saveUserSetting":
+        let saveuser_arg={
+          "sessionId":"912345231",
+          "question_volume":6
+        }
+        return saveUserSetting(saveuser_arg);
     }
   }
 }
