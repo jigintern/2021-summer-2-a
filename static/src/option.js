@@ -1,4 +1,5 @@
 import { fetchJSON } from "https://js.sabae.cc/fetchJSON.js";
+import { getSessionId } from './utils/util.js'
 let input = document.getElementById("inputQuestion");
 let exit = document.getElementById("exit");
 let fiveButton=document.getElementById("fiveQuestion");
@@ -6,7 +7,7 @@ let tenButton=document.getElementById("tenQuestion");
 let twentyButton=document.getElementById("twentyQuestion");
 
 window.onload = async () => {
-    const nowSession = localStorage.getItem("session_id")
+    const nowSession = getSessionId();
     const setting = await fetchJSON("/api/getUserSetting", { session: nowSession });
     input.value=setting.question_volume;
   };
