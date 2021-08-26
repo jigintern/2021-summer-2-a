@@ -18,12 +18,12 @@ import { fetchJSON } from "https://js.sabae.cc/fetchJSON.js";
     "nickname":"asdifwif"
 }
 */
-export function getComments() {
-    const get_json =fetchJSON("api/test");  //フロントから解答結果とニックネームのデータをもらう。
+export function getComments(get_json) {
+    // const get_json =fetchJSON("api/test");  //フロントから解答結果とニックネームのデータをもらう。
     const comment_json=new JSONDB("./server/json/comments.json");
     let count=0;    //正解数のカウント
-    for (let i = 0; i < get_json.data.key.length; i++) {
-        if (get_json.data.key[i].userresult=="OK") {
+    for (let i = 0; i < get_json.key.length; i++) {
+        if (get_json.key[i].userresult=="OK") {
             count++;
         }
     }

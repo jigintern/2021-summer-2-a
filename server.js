@@ -2,9 +2,10 @@ import { Server } from "https://js.sabae.cc/Server.js";
 import { JSONDB } from "https://js.sabae.cc/JSONDB.js";
 import { getQuestion } from "./server/api/getQuestion.js";
 import { GETanswer } from "./server/api/GETanswer.js";
-import { getSession, getUser, saveUserName, registAdmin, getAdminSessionId, saveAdminName } from "./server/api/session.js";
-
-
+import { getSessionId, getUser, saveUserName, registAdmin, getAdminSessionId, saveAdminName } from "./server/api/session.js";
+import { saveAnswer } from "./server/api/saveAnswer.js";
+import { getComments } from "./server/api/getComments.js";
+import { sample } from "./server/api/sample.js";
 const questions = new JSONDB("./server/json/questions.json");
 // const results = new JSONDB("./server/json/result.json")
 
@@ -44,8 +45,8 @@ class QuizServer extends Server {
       case "/api/getQuestion":
         return getQuestion(3);  //returnを忘れずに！！
       // セッション取得
-      case "/api/getSession":
-        return getSession(req.session);
+      case "/api/getSessionId":
+        return getSessionId(req.session);
       // ユーザーを取得
       case "/api/getUser":
         return getUser(req.session);
@@ -61,6 +62,45 @@ class QuizServer extends Server {
       // クイズ登録用ユーザーのニックネームを設定
       case "/api/saveAdminName":
         return saveAdminName(req.ad_session, req.name);
+      // ユーザーの解答結果を保存する。
+      case "/api/saveAnswer":
+        let ans_argument={
+          "answers":[
+              {
+                  "quizId":3,
+                  "userans":"asdvasdvsdfassf"
+              },
+              {
+                  "quizId":2,
+                  "userans":"vaswefefsfdfs"
+              }
+          ]
+        }
+        let user_arugument={
+          "userId":"00204502040"
+        }
+        return saveAnswer(user_arugument,ans_argument);
+      // ユーザーの点数状況からコメントを返す。
+      case "/api/getComments":
+        let argument={
+            "key":[
+                {
+                    "quizid":11,
+                    "userans":"aple",
+                    "userresult":"NO"
+                },
+                {
+                    "quizid":12,
+                    "userans":"false",
+                    "userresult":"OK"
+                },
+            ],
+            "nickname":"asdifwif"
+        }
+        return getComments(argument);
+      // デバッグ用サンプルコードの実行。
+      case "/api/sample":
+        return sample({"aiueo":20});  //JSON引数が可能！！
     }
   }
 }
