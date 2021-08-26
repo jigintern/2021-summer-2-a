@@ -10,12 +10,7 @@ console.log(session_id);
 let start = document.getElementById("start");
 let option = document.getElementById("option");
 let input =document.getElementById("inputNickname")
-start.addEventListener("click", () => {
-  location.href = "../main.html";
-}, false);
-option.addEventListener("click", () => {
-  location.href = "../option.html";
-});
+
 
 function changeNickname() {
   console.log("inputButton was pushed");
