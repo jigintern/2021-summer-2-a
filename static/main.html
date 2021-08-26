@@ -1,47 +1,35 @@
 <!DOCTYPE html>
 <html lang="ja">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <link
-      rel="stylesheet"
-      href="https://unpkg.com/sakura.css/css/sakura.css"
-      type="text/css"
-    />
-    <link rel="stylesheet" href="./styles/main.css" />
-  </head>
 
-  <body>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <link rel="stylesheet" href="https://unpkg.com/sakura.css/css/sakura.css" type="text/css" />
+  <link rel="stylesheet" href="./styles/main.css" />
+</head>
 
-    <div id="modalContainer" class="modalContainer">
-      <!-- <div class="modalBg"> </div> -->
-      <div id="modalMain">
-        <div class="modalText">aaaaaaaa</div>
-        <div class="modalButton">next</div>
-      </div>
+<body>
+  <header>
+    <div id="exitContainer">
+      <button id="exit" onclick="location.href='./index.html'">トップへ戻る</button>
     </div>
+  </header>
 
-    <header>
-      <div id="exitContainer">
-        <button id="exit" onclick="location.href='./index.html'">トップへ戻る</button>
-      </div>
-    </header>
-
-    <main>
-      <div id="quizStatement"></div>
-    </main>
-
-    <footer id="footer">
-
-    </footer>
-
-    <script type="module" src="src/main.js"></script>
-  </body>
+  <main>
+    <div id="quizStatement"></div>
+  </main>
+  <script type="module" src="src/main.js"></script>
+  <div id="bottom"></div>
   <footer>
+    <div id="answer"></div>
+    <div id="explanation"></div>
     <div id="choicesContainer"></div>
     <div id="submitButtonContainer">
       <button id="submitButton">決定</button>
+      <button id="nextButton">次の問題</button>
     </div>
   </footer>
+  <script type="module" src="src/main.js"></script>
+</body>
 </html>

@@ -29,8 +29,6 @@ const setAnswers = ({ id, currAns }) => {
       ? { quizId: d.quizId, amswer: currAns }
       : d
   })
-  console.log("new", newAnswers)
-  
   state.set("answers", newAnswers)
 }
 const getAnswers = () => state.get("answers")
@@ -39,6 +37,9 @@ const initAnsList = () => state.set(
   getQuizList().map(({ quizId }) => ({ quizId, answer: 999 }))
 )
 
+const hideChoices = () => {
+  $("choicesContainer").hide()
+}
 const createChoices = ({ choices }) => {
   choices.map(({ text, id }) => {
     const choiceBtn = document.createElement("button");
@@ -59,25 +60,27 @@ const createChoices = ({ choices }) => {
   return;
 };
 
-const endOfGame = () => {
-  consolelog(getAnswers())
-  location.href = './result.html'
+const end = () => {
+
 }
 
 window.onload = async () => {
-  setQuizList(await fetchJSON("/api/getQuizList"));
-  initAnsList(initAnsList)
-  setCurrentQuiz(getQuizList()[0])
-  loopQuiz(getCurrentQuiz())
+  await setQuizList(await fetchJSON("/api/getQuizList"));
+  await initAnsList(initAnsList)
+  await setCurrentQuiz(getQuizList()[0])
+  await loopQuiz(getCurrentQuiz())
 };
 
-const loopQuiz = (nowQuiz) => {
-  submitButton.setAttribute("disabled")
+const loopQuiz = async (nowQuiz) => {
+  visibility("choicesContainer", true)
+  visibility("submitButton", true)
+  visibility("nextButton", false)
   createChoices(nowQuiz);
 
-  const submitButton = getElement("submitButton");
-
-  submitButton.onclick = () => {
+  getElement("submitButton").onclick = () => {
+    visibility("choicesContainer", false)
+    visibility("submitButton", false)
+    visibility("nextButton", true)
     setAnswers({
       id: nowQuiz.quizId,
       currAns: getCurrentChoice(),
@@ -86,28 +89,33 @@ const loopQuiz = (nowQuiz) => {
     fetchJSON("/api/getAnswer", {
       quizId: nowQuiz.quizId
     }).then((d) => {
-      submitButton.setAttribute("disabled", "disabled")
-
       const { text } = nowQuiz.choices.find(a => a.id === d.answerId)
-      const nextId = nowQuiz.nextId
+      const nextId = nowQuiz.nextId;
       const nextQuiz = getQuizList().find((a) => a.quizId === nextId);
 
+      // ボタンを無効化するタグ
+      visibility("choicesContainer", false)
+  
       getElement("explanation").innerText = d.explanation
       getElement("answer").innerText = text
-      getElement("nextQuiz").onclick = () => {
+      getElement("nextButton").onclick = () => {
         removeElement("#choicesContainer")
-        removeElement("#explanation")
-        removeElement("#answer")
-        loopQuiz(nextQuiz)
+        visibility("explanation", false)
+        visibility("answer", false)
+        if (nextQuiz) {
+          loopQuiz(nextQuiz);
+        }
+        if (nextQuiz === 999){
+          endOfGame();
+        }
       }
     })
 
-    if (nextQuiz) {
-      removeElement("#choicesContainer");
-      loopQuiz(nextQuiz);
-    }
-    if (nextQuiz === 999){
-      endOfGame();
-    }
   };
 };
+
+const visibility = (el, isVisible) => {
+  isVisible
+    ? getElement(el).style.display = "block"
+    : getElement(el).style.display = "none"
+}
