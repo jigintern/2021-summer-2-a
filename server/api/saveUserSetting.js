@@ -8,7 +8,7 @@ import { JSONDB } from "https://js.sabae.cc/JSONDB.js";
 }
 */
 export function saveUserSetting(json) {
-    const save_json=new JSONDB("./server/json/user-setting.json");
+    const save_json=new JSONDB("./server/json/user_setting.json");
     let check=save_json.data.user_setting.find(ele=>ele.sessionId==json.sessionId)
     if (check) {
         //同じユーザーID→上書き
