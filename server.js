@@ -1,7 +1,7 @@
 import { Server } from "https://js.sabae.cc/Server.js";
 import { JSONDB } from "https://js.sabae.cc/JSONDB.js";
 import { getQuestion } from "./server/api/getQuestion.js";
-import { GETanswer } from "./server/api/GETanswer.js";
+import { getAnswer } from "./server/api/getAnswer.js";
 import { getSessionId, getUser, saveUserName, registAdmin, getAdminSessionId, saveAdminName } from "./server/api/session.js";
 import { saveAnswer } from "./server/api/saveAnswer.js";
 import { getComments } from "./server/api/getComments.js";
@@ -30,8 +30,7 @@ class QuizServer extends Server {
         // 回答をのぞいた問題リストを返す。
         return currentQuestions;
       case "/api/getAnswer": // クライアントから送られた回答が正解かどうかを返す。
-
-        const answer = GETanswer(req.quizId);
+        const answer = getAnswer(req.quizId);
         return answer;
       case "/api/getAnswers": // 回答一覧を取得
         const ansList = questions.data;
