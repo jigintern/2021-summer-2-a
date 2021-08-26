@@ -80,11 +80,13 @@ const loopQuiz = async (nowQuiz) => {
   getElement("quizStatement").innerText = nowQuiz.statement
   createChoices(nowQuiz);
 
+  visibility("answerContainer", false)
   visibility("choicesContainer", true)
   visibility("submitButton", true)
   visibility("nextButton", false)
 
   getElement("submitButton").onclick = async () => {
+    visibility("answerContainer", true)
     visibility("choicesContainer", false)
     visibility("submitButton", false)
     visibility("nextButton", true)
