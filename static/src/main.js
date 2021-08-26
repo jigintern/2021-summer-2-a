@@ -96,11 +96,10 @@ const loopQuiz = async (nowQuiz) => {
       currAns: getCurrentChoice(),
     })
 
-    const { explanation, answerId } =await fetchJSON("/api/getAnswer", {
+    const { explanation, answerId } = await fetchJSON("/api/getAnswer", {
       quizId: nowQuiz.quizId
     })
-    // // ボタンを無効化するタグ
-    // visibility("choicesContainer", false)
+
     const choiceText = nowQuiz.choices.find(a => a.id === answerId).text
     getElement("explanation").innerText = explanation
     getElement("answer").innerText = choiceText
