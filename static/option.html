@@ -11,17 +11,21 @@
     />
   </head>
   <body>
+    <button id="exit" onclick="location.href='./index.html'">トップへ戻る</button>
     <div>ニックネーム</div>
-    <input />
-    <button id="inputButton" onclick="hoge()">決定</button>
+    <input type="text" id=inputNickname value=""/>
+    <button id="inputButton" onclick="changeNickname()">決定</button>
     <script src="./index.html"></script>
-    <p id="inputButtonClicked">hoge</p>
+    <p id="inputButtonClicked"></p>
+    <p id="recentNickname">現在の名前:登録されていません</p>
+
+    <div>問題数</div>
+    <input disabled="disabled" id=inputQuestion value="5"/><br />
+    <button id="fiveQuestion" onclick="question(5)">5</button>
+    <button id="tenQuestion" onclick="question(10)">10</button>
+    <button id="twentyQuestion" onclick="question(20)">20</button>
   </body>
-  <script>
-    function hoge() {
-      console.log("inputButton was pushed");
-      var sampleArea = document.getElementById("inputButtonClicked");
-      sampleArea.innerHTML = "適用しました";
-    }
+  <script src="src/option.js">
+
   </script>
 </html>
