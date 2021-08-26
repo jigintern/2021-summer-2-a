@@ -28,11 +28,7 @@ class QuizServer extends Server {
         return setting;
       //設定を保持する
       case "/api/saveUserSetting":
-        let saveuser_arg={
-          "sessionId":"912345231",
-          "question_volume":6
-        }
-          return saveUserSetting(saveuser_arg);
+          return saveUserSetting(req);
       
       //問題を指定された問題数分取り出す
       case "/api/getQuestion":

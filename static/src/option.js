@@ -20,6 +20,6 @@ twentyButton.onclick=()=>{
 }
 exit.onclick = async() => {
 
-    fetchJSON("/api/saveUserSetting",{json:setting});
+    fetchJSON("/api/saveUserSetting",{sessionId:localStorage.getItem("session_id"),question_volume:input.value});
     location.href='./index.html';
 }
