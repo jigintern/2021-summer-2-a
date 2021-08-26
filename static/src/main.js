@@ -64,14 +64,14 @@ const end = () => {
 }
 
 window.onload = async () => {
-  await setQuizList(await fetchJSON("/api/getQuizList"));
-  await initAnsList(initAnsList)
-  await setCurrentQuiz(getQuizList()[0])
-  await loopQuiz(getCurrentQuiz())
+  setQuizList(await fetchJSON("/api/getQuestion", { quizNum: 10 }));
+  initAnsList(initAnsList)
+  setCurrentQuiz(getQuizList()[0])
+  loopQuiz(getCurrentQuiz())
 };
 
 const loopQuiz = async (nowQuiz) => {
-  
+  getElement("quizStatement").innerText = nowQuiz.statement
   createChoices(nowQuiz);
   
   visibility("choicesContainer", true)
@@ -104,6 +104,10 @@ const loopQuiz = async (nowQuiz) => {
       removeElement("#choicesContainer");
       visibility("submitButton", false)
       visibility("nextButton", true)
+      
+      getElement("quizStatement").innerText = ""
+      getElement("explanation").innerText = ""
+      getElement("answer").innerText = ""
       loopQuiz(nextQuiz);
     } else {
       endOfGame();
