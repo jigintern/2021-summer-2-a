@@ -10,6 +10,9 @@ let start = document.getElementById("start");
 let option = document.getElementById("option");
 let input = document.getElementById("inputNickname");
 
+const user = await fetchJSON("/api/getUser", {session: session_id});
+input.value = user.name;
+
 start.onclick = async () => {
   if (input.value == "") {
     console.log("no nickname");
