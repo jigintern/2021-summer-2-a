@@ -143,7 +143,7 @@ body {
     grid-template-columns: 40px minmax(300px, 414px) 40px;
     grid-template-rows: 
         5rem
-        206px
+        176px
         auto
         104px
     ;
@@ -171,15 +171,13 @@ body {
     align-content: center;
 }
 .inner-statement {
-    width: 95%;
-    height: 90%;
-    margin:2.5%;
-    margin-top: 2.5%
+    width: calc(100% - 1rem);
+    height: calc(100% - 1rem);
+    margin: 0.5rem;
 }
 
 .main-statement-text {
-    padding-top: 1rem;
-    padding-left: 1rem;
+    padding: 1rem;
 
 }
 
@@ -199,6 +197,31 @@ body {
     height: 6rem;
     width: 100%;
     margin-top: 2rem;
+}
+
+#answerContainer {
+    margin-top: 2rem;
+}
+
+.correct-incorrect {
+    width: 136px;
+    height: 54px;
+    font-weight: 900;
+    font-size: 30px;
+    text-align: center;
+}
+
+#answer {
+    margin: 1rem;
+}
+#explanation-head {
+    margin: 1rem;
+    text-align: center;
+    width: 136px;
+}
+#explanation {
+    margin: 1rem;
+    overflow-y: scroll;
 }
 
 .outer-shadow {
