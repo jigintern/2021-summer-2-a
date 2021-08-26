@@ -24,8 +24,7 @@ class QuizServer extends Server {
       
       //sessionを受け取って設定を返す
       case "/api/getUserSetting":
-        const setting = getUserSetting("025110");
-        return setting;
+        return getUserSetting(req.session);
       //設定を保持する
       case "/api/saveUserSetting":
         return saveUserSetting(req);
