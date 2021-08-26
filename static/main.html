@@ -1,34 +1,39 @@
 <!DOCTYPE html>
-<html lang="ja">
+<meta name="viewport" content="width=device-width" />
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Document</title>
-  <link rel="stylesheet" href="https://unpkg.com/sakura.css/css/sakura.css" type="text/css" />
-  <link rel="stylesheet" href="./styles/main.css" />
-</head>
+<title>クイズトップ</title>
+
+<link rel="stylesheet" href="./styles/style.css" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;900&display=swap" rel="stylesheet">
 
 <body>
-  <header>
-    <div id="exitContainer">
-      <button id="exit" onclick="location.href='./index.html'">トップへ戻る</button>
-    </div>
-  </header>
-
-  <main>
-    <div id="quizStatement"></div>
-  </main>
-  <div id="bottom"></div>
-  <footer>
-    <div id="answer"></div>
-    <div id="explanation"></div>
-    <div id="choicesContainer"></div>
+  <div id="main-wrap">
+    <header id="main-header">
+      <div id="exitContainer">
+        <button id="exit" class="main-exit button_unclick">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+            <path fill="none" d="M0 0h24v24H0z" />
+            <path
+              d="M20 20a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-9H1l10.327-9.388a1 1 0 0 1 1.346 0L23 11h-3v9zM8 15v2h8v-2H8z" />
+          </svg>
+        </button>
+      </div>
+    </header>
+    <section id="main-statement" class="outer-shadow outer-statement">
+      <div class="inner-shadow inner-statement">
+        <div id="quizStatement" class="main-statement-text">
+          説明
+        </div>
+      </div>
+    </section>
+    <main id="choicesContainer" class="main-choices">
+    </main>
     <div id="submitButtonContainer">
-      <button id="submitButton">決定</button>
-      <button id="nextButton">次の問題</button>
+      <button id="submitButton" class="main-submit-button button_unclick">決定</button>
+      <button id="nextButton" class="main-submit-button button_unclick">次の問題</button>
     </div>
-  </footer>
+  </div>
   <script type="module" src="src/main.js"></script>
 </body>
-</html>
