@@ -1,19 +1,31 @@
 import { JSONDB } from "https://js.sabae.cc/JSONDB.js";
-import { fetchJSON } from "https://js.sabae.cc/fetchJSON.js";
-/**
- * @param {int} num  欲しい件数の番号データ件数
+//*引数のデータ
+/*
+{
+    "sessionId":"025110"
+}
  */
-export function getQuestion(num) {
-    const json =new JSONDB("./server/json/questions.json");
-    let shuffle_question=new Array(num);
+
+//欲しいデータの件数→user-setting.jsonからnumとして取得
+export function getQuestion(user) {
+    const question_json =new JSONDB("./server/json/questions.json");
+    const setting_json=new JSONDB("./server/json/user_setting.json");   
+    //データ件数numを取得。
+    let user_check=setting_json.data.user_setting.find(ele=>ele.sessionId==user.sessionId);
+    if (!user_check) {
+        return "User Not Found";
+    }
+    let user_index=setting_json.data.user_setting.indexOf(user_check);
+    let num=setting_json.data.user_setting[user_index].question_volume;
     /***シャッフル***/
+    let shuffle_question=new Array(num);
     for (let i = 0; i < num; i++) {
-        shuffle_question[i]=json.data.quizData[Math.floor(Math.random()*json.data.quizData.length)];
+        shuffle_question[i]=question_json.data.quizData[Math.floor(Math.random()*question_json.data.quizData.length)];
     }
     /****************/
     // 問題から回答のみ削除
     const get_question = shuffle_question.map((data) => {
-        delete data.answersId;
+        delete data.answerId;
         delete data.explanation;
         return data;
     });
