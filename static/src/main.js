@@ -1,7 +1,8 @@
 import { fetchJSON } from "https://js.sabae.cc/fetchJSON.js";
 import {
   removeElement,
-  getElement
+  getElement,
+  getSessionId,
 } from './utils/util.js'
 
 let state = new Map();
@@ -37,9 +38,6 @@ const initAnsList = () => state.set(
   getQuizList().map(({ quizId }) => ({ quizId, answer: 999 }))
 )
 
-const hideChoices = () => {
-  $("choicesContainer").hide()
-}
 const createChoices = ({ choices }) => {
   choices.map(({ text, id }) => {
     const container = document.createElement("div")
@@ -60,12 +58,19 @@ const createChoices = ({ choices }) => {
   return;
 };
 
-const end = () => {
-
+const end = async () => {
+  const nowSession = getSessionId()
+  const answers = getAnswers()
+  const a = await fetchJSON("/api/saveAnswer", {
+    session: nowSession,
+    answers: answers
+  })
+  console.log(a)
 }
 
 window.onload = async () => {
-  setQuizList(await fetchJSON("/api/getQuestion", { quizNum: 10 }));
+  const nowSession = getSessionId()
+  setQuizList(await fetchJSON("/api/getQuestion", { session: nowSession }));
   initAnsList(initAnsList)
   setCurrentQuiz(getQuizList()[0])
   loopQuiz(getCurrentQuiz())
@@ -74,7 +79,7 @@ window.onload = async () => {
 const loopQuiz = async (nowQuiz) => {
   getElement("quizStatement").innerText = nowQuiz.statement
   createChoices(nowQuiz);
-  
+
   visibility("choicesContainer", true)
   visibility("submitButton", true)
   visibility("nextButton", false)
@@ -83,6 +88,7 @@ const loopQuiz = async (nowQuiz) => {
     visibility("choicesContainer", false)
     visibility("submitButton", false)
     visibility("nextButton", true)
+
     setAnswers({
       id: nowQuiz.quizId,
       currAns: getCurrentChoice(),
@@ -111,7 +117,7 @@ const loopQuiz = async (nowQuiz) => {
       getElement("answer").innerText = ""
       loopQuiz(nextQuiz);
     } else {
-      endOfGame();
+      end();
     }
   }
 };

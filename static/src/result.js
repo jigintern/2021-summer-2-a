@@ -1,3 +1,4 @@
+import { getSessionId } from './utils/util.js'
 
 let main = document.getElementById("main");
 

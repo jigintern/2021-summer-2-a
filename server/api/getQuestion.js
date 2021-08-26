@@ -1,25 +1,28 @@
 import { JSONDB } from "https://js.sabae.cc/JSONDB.js";
-//*引数のデータ
-/*
-{
-    "sessionId":"025110"
-}
- */
 
-//欲しいデータの件数→user-setting.jsonからnumとして取得
-export function getQuestion(user) {
+/**
+ * 問題を返す
+ * ユーザー設定が取得できた場合は設定された件数分返す（デフォ5件）
+ * @param {number} sessionId 
+ * @returns 
+ */
+export function getQuestion(sessionId) {
     const question_json =new JSONDB("./server/json/questions.json");
     const setting_json=new JSONDB("./server/json/user_setting.json");   
     //データ件数numを取得。
-    let user_check=setting_json.data.user_setting.find(ele=>ele.sessionId==user.sessionId);
-    if (!user_check) {
-        return "User Not Found";
+    let setting;
+    if (sessionId) {
+        setting = setting_json.data.find(ele => ele.sessionId == sessionId);
     }
-    let user_index=setting_json.data.user_setting.indexOf(user_check);
-    let num=setting_json.data.user_setting[user_index].question_volume;
+    let limit = 0
+    if (!setting) {
+        limit = 5;
+    } else {
+        limit = setting.question_volume;
+    }
     /***シャッフル***/
-    let shuffle_question=new Array(num);
-    for (let i = 0; i < num; i++) {
+    let shuffle_question=new Array(limit);
+    for (let i = 0; i < limit; i++) {
         shuffle_question[i]=question_json.data.quizData[Math.floor(Math.random()*question_json.data.quizData.length)];
     }
     /****************/

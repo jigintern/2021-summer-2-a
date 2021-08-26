@@ -1,12 +1,22 @@
-{
-  "user_setting": [
-    {
-      "sessionId": "025110",
-      "question_volume": 4
-    },
-    {
-      "sessionId": "25642321",
-      "question_volume": 2
-    }
-  ]
-}
+[
+  {
+    "sessionId": "025110",
+    "question_volume": 11
+  },
+  {
+    "sessionId": "25642321",
+    "question_volume": 2
+  },
+  {
+    "sessionId": "912345231",
+    "question_volume": 6
+  },
+  {
+    "sessionId": "0.1869244185773855",
+    "question_volume": "20"
+  },
+  {
+    "sessionId": "11111111",
+    "question_volume": 12
+  }
+]
