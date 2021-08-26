@@ -29,4 +29,5 @@ export function saveUserSetting(json) {
         save_json.data.push(newSetting);
         save_json.write();
     }
+    return "ok";
 }
