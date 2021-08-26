@@ -7,7 +7,15 @@ body {
     height: 120px;
     border: 10px outset #53c2be;
   }
+  button#inputbutton{
+    width: 100px;
+    height: 100px;
 
+  }
+  
+  div#nicknames{
+    text-align: center;
+  }
   .title {
     text-align: center;
     position: relative;
@@ -17,10 +25,10 @@ body {
   .topButtons {
     text-align: center;
     position: relative;
-    margin-top: 30%;
+    margin-top: 10%;
   }
 
   .buttonOption {
     position: relative;
-    margin-top: 20%;
+    margin-top: 15%;
   }
