@@ -32,7 +32,6 @@ export function saveAnswer(sessionId, answers) {
     if (!sessionId || !answers) {
         return;
     }
-    console.log(answers);
     let usersAnswers = new JSONDB(USERS_ANSWERS_PATH);
     let usersAnswer = {
         user_session_id: sessionId,
