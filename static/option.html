@@ -4,20 +4,36 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>option</title>
-    <link
-      rel="stylesheet"
-      href="https://unpkg.com/sakura.css/css/sakura.css"
-      type="text/css"
-    />
+    <link rel="stylesheet" href="./styles/style.css" />
   </head>
-  <script src="src/option.js" type="module"></script>
   <body>
-      <button id="exit">トップへ戻る</button>
-    <div>問題数</div>
-    <input disabled="disabled" id=inputQuestion value="5"/><br />
-    <button id="fiveQuestion">5</button>
-    <button id="tenQuestion">10</button>
-    <button id="twentyQuestion" >20</button>
+
+    <div id="main-wrap">
+      <header id="main-header">
+        <div id="exitContainer">
+          <button id="exit" class="main-exit button_unclick">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+              <path fill="none" d="M0 0h24v24H0z" />
+              <path
+                d="M20 20a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-9H1l10.327-9.388a1 1 0 0 1 1.346 0L23 11h-3v9zM8 15v2h8v-2H8z" />
+            </svg>
+          </button>
+        </div>
+      </header>
+
+      <div id="top-menu" class="input_shadow">
+        <input id="inputQuestion" type="number" placeholder="表示する問題数">
+      </div>
+      <div>
+        <button id="fiveQuestion" class="main-submit-button button_unclick">5</button>
+        <button id="tenQuestion" class="main-submit-button button_unclick">10</button>
+        <button id="twentyQuestion" class="main-submit-button button_unclick">20</button>
+      </div>
+      <footer id="top-foot">
+      </footer>    
+
+      <script src="src/option.js" type="module"></script>
+    </div>
     
   </body>
 
