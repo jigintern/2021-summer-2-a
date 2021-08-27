@@ -33,6 +33,10 @@ export function getQuestion(sessionId) {
         return data;
     });
 
+    let q = get_question.slice(-1)[0];
+    console.log(q);
+    q.lastQuestion = true;
+
     return get_question; 
 }
 
