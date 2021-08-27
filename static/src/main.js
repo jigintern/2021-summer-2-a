@@ -5,6 +5,8 @@ import {
   getSessionId,
 } from './utils/util.js'
 
+const FINAL_QUIZ_ID = 99999
+
 let state = new Map();
 
 const setQuizList = (data) => {
@@ -12,7 +14,7 @@ const setQuizList = (data) => {
     if (i !== data.length - 1) {
       a.nextId = data[i + 1]["quizId"];
     } else {
-      a.nextId = 999
+      a.nextId = FINAL_QUIZ_ID
     }
     return a;
   });
@@ -70,6 +72,12 @@ const end = async () => {
 
 window.onload = async () => {
   const nowSession = getSessionId()
+  if (!nowSession) {
+    location.href = "/"
+  }
+  getElement("exit").onclick = () => {
+    location.href = '/'
+  }
   setQuizList(await fetchJSON("/api/getQuestion", { session: nowSession }));
   initAnsList(initAnsList)
   setCurrentQuiz(getQuizList()[0])
@@ -84,12 +92,20 @@ const loopQuiz = async (nowQuiz) => {
   visibility("choicesContainer", true)
   visibility("submitButton", true)
   visibility("nextButton", false)
+  visibility("resultButton", false)
 
   getElement("submitButton").onclick = async () => {
+    const { nextId } = nowQuiz;
     visibility("answerContainer", true)
     visibility("choicesContainer", false)
     visibility("submitButton", false)
-    visibility("nextButton", true)
+    
+
+    if (nextId === FINAL_QUIZ_ID) {
+      visibility("resultButton", true)
+    } else {
+      visibility("nextButton", true)
+    }
 
     setAnswers({
       id: nowQuiz.quizId,
@@ -108,18 +124,19 @@ const loopQuiz = async (nowQuiz) => {
   getElement("nextButton").onclick = async () => {
     const nextId = nowQuiz.nextId;
     const nextQuiz = getQuizList().find((a) => a.quizId === nextId);
-    if (nextQuiz) {
-      removeElement("#choicesContainer");
-      visibility("submitButton", false)
-      visibility("nextButton", true)
-      
-      getElement("quizStatement").innerText = ""
-      getElement("explanation").innerText = ""
-      getElement("answer").innerText = ""
-      loopQuiz(nextQuiz);
-    } else {
-      end();
-    }
+
+    removeElement("#choicesContainer");
+    visibility("submitButton", false)
+    visibility("nextButton", true)
+    
+    getElement("quizStatement").innerText = ""
+    getElement("explanation").innerText = ""
+    getElement("answer").innerText = ""
+    loopQuiz(nextQuiz);
+  }
+
+  getElement("resultButton").onclick = () => {
+    location.href = "/result.html"
   }
 };
 
