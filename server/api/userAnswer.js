@@ -77,14 +77,19 @@ export function getUserLatestAnswer(sessionId) {
         }
     });
 
+    let correctCount = 0;
     usersLatestAnswer.answers.forEach(e => {
         const quizId = e.quizId;
         let quiz = questions.data.quizData.find(q => q.quizId == quizId);
         if (quiz) {
             e.statement = quiz.statement;
             e.correct = e.amswer == quiz.answerId;
+            if (e.amswer == quiz.answerId) {
+                correctCount++;
+            }
         }
     });
+    usersLatestAnswer.correctCount = correctCount;
 
     return usersLatestAnswer;
 }
