@@ -239,3 +239,51 @@ body {
     box-shadow: inset 10px 10px 20px #A3B1C6, inset -10px -10px 20px #FFFFFF;
     border-radius: 21px;
 }
+
+#result-wrap {
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    display: grid;
+    grid-template-columns: 40px minmax(300px, 414px) 40px;
+    grid-template-rows: 
+        176px
+        minmax(20rem, auto)
+        auto
+        104px
+    ;
+}
+
+#result-wrap > * {
+    grid-column: 2 / -2;
+}
+
+#result-header {
+    grid-row: 1 / 2;
+}
+
+#answersListContainer {
+    grid-row: 2 / 3;
+}
+/* 
+.answerContainer {
+    display: grid;
+    grid-template-columns: 1fr 54px;
+    grid-template-rows: repeat(54px);
+    grid-gap: 20px;
+}
+.answerContainer > .statement {
+    height: 54px;
+    margin-top: 20px;
+}
+.answerContainer > .correct {
+    height: 54px;
+    margin-top: 20px;
+} */
+
+
+#continueButtonsContainer {
+    grid-row: 3 / 4;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
