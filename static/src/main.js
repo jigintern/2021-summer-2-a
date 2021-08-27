@@ -64,7 +64,6 @@ const end = async () => {
     session: nowSession,
     answers: answers,
   });
-  console.log(a);
 };
 
 window.onload = async () => {
@@ -112,11 +111,9 @@ const loopQuiz = async (nowQuiz) => {
       quizId: nowQuiz.quizId,
     });
     if(answerId===getCurrentChoice()){
-      console.log("correct")
       getElement("correct").innerText="正解";
     }else{
       getElement("correct").innerText="不正解";
-      console.log("incorrect")
     }
 
     const choiceText = nowQuiz.choices.find((a) => a.id === answerId).text;

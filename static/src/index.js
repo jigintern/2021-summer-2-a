@@ -14,9 +14,7 @@ const user = await fetchJSON("/api/getUser", {session: session_id});
 input.value = user.name;
 
 start.onclick = async () => {
-  if (input.value == "") {
-    console.log("no nickname");
-  } else {
+  if (input.value != "") {
     await fetchJSON("/api/saveUserName", {
       name: input.value,
       session: session_id,
@@ -26,7 +24,6 @@ start.onclick = async () => {
 };
 
 function changeNickname() {
-  console.log("inputButton was pushed");
   const nickname = document.getElementById("recentNickname");
   let input = document.getElementById("inputNickname");
 
