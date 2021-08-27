@@ -1,41 +1,52 @@
 <!DOCTYPE html>
-<html lang="ja">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+<meta name="viewport" content="width=device-width" />
 
-    <link rel="stylesheet" href="https://unpkg.com/sakura.css/css/sakura.css" type="text/css" />
-    <link href="./styles/result.css" rel="stylesheet">
-    
-</head>
+<title>結果発表</title>
+
+<link rel="stylesheet" href="./styles/style.css" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;900&display=swap" rel="stylesheet">
 
 <body>
-  <header class="page_title">
-    <h1>結果発表！</h1>
-  </header>
+    <div id="result-wrap">
+        <div></div>
+        <header id="result-header">
+            <h1>結果発表！</h1>
 
-<!-- scoreが得点の変数、parameterが何点満点かの変数　評価を点数にするかは未定 -->
-<div class="text">
-    <p>あなたの得点は</p>
-    <p>score/parameter 点</p>
-    <p>です！</p>
-</div>
+            <div id="scoreContainer">
+                <p>あなたの得点は</p>
+                <p id="yourScore">score/parameter 点</p>
+                <p>です！</p>
+            </div>
+        </header>
 
-<div class="result_button">
-    <div class="button_item">
-        <a href="./index.html"><button id="top">トップに戻る</button></a>
+        <!-- <div id="answersListContainer" >
+            <div class="answerContainer">
+                <div class="statement button_unclick">aaaaaaaaaaa</div>
+                <div class="correct button_unclick">o</div>
+            </div>
+            <div class="answerContainer">
+                <div class="statement button_unclick">aaaaaaaaaaa</div>
+                <div class="correct">o</div>
+            </div>
+            <div class="answerContainer">
+                <div class="statement button_unclick">aaaaaaaaaaa</div>
+                <div class="correct button_unclick">o</div>
+            </div>
+            <div class="answerContainer">
+                <div class="statement button_unclick">aaaaaaaaaaa</div>
+                <div class="correct correct-icon">
+
+                </div>
+            </div>
+        </div> -->
+
+        <div id="continueButtonsContainer" class="result_button" >
+            <button class="button_unclick" onclick="location.href='/'">トップに戻る</button>
+            <button class="button_unclick" onclick="location.href='/main'"id="main">もう一度挑戦</button>
+        </div>
+
+        <script type="module" src="./src/result.js"></script>
     </div>
-    <div class="button_item">
-        <button id="main">もう一度挑戦</button>
-    </div>
-</div>
-
-<a href="./option.html"><button id="option">オプション</button></a>
-
-<a href="./main.html"></a>
-
-<script src="./src/result.js"></script>
 </body>
-
-</html>
