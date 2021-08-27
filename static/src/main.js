@@ -140,6 +140,7 @@ const loopQuiz = async (nowQuiz) => {
   };
 
   getElement("resultButton").onclick = () => {
+    end()
     location.href = "/result.html";
   };
 };
