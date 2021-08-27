@@ -214,6 +214,7 @@ body {
     font-weight: 900;
     font-size: 30px;
     text-align: center;
+    margin: 1rem;
 }
 
 #answer {
@@ -260,12 +261,22 @@ body {
 
 #result-header {
     grid-row: 1 / 2;
+    padding-top: 3rem;
 }
 
 #answersListContainer {
     grid-row: 2 / 3;
 }
-/* 
+
+#yourScore {
+    font-weight: 900;
+    font-size: 40px;
+    text-align: center;
+}
+#desu {
+    text-align: right;
+}
+
 .answerContainer {
     display: grid;
     grid-template-columns: 1fr 54px;
@@ -273,17 +284,22 @@ body {
     grid-gap: 20px;
 }
 .answerContainer > .statement {
-    height: 54px;
+    padding: 1rem;
     margin-top: 20px;
 }
 .answerContainer > .correct {
-    height: 54px;
+    
+    display: flex;
+    justify-self: center;
+    align-self: center;
     margin-top: 20px;
-} */
-
+}
 
 #continueButtonsContainer {
     grid-row: 3 / 4;
     display: grid;
     grid-template-columns: 1fr 1fr;
+    height: 54px;
+    margin-top: 40px;
+    grid-gap: 20px;
 }
