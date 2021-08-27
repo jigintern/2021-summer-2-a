@@ -190,6 +190,11 @@ body {
     width: 100%;
     margin-bottom: 1rem;
 }
+.main-choice-button:focus {
+    background: linear-gradient(150.8deg, #E8EBF1 5.84%, rgba(232, 241, 248, 0) 147.58%);
+    box-shadow: inset -10px -10px 26px rgba(255, 255, 255, 0.5), inset 10px 10px 10px rgba(163, 177, 198, 0.5);
+    border-radius: 13px;
+}
 #submitButtonContainer {
     grid-row: 4/5;
 }
