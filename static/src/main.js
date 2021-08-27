@@ -6,10 +6,12 @@ const FINAL_QUIZ_ID = 99999;
 let state = new Map();
 
 const setQuizList = (data) => {
+  console.log("setQuiz", data)
   data.map((a, i) => {
     if (i !== data.length - 1) {
       a.nextId = data[i + 1]["quizId"];
-    } else {
+    }
+    if (a.lastQuestion){
       a.nextId = FINAL_QUIZ_ID;
     }
     return a;
@@ -74,7 +76,9 @@ window.onload = async () => {
   getElement("exit").onclick = () => {
     location.href = "/";
   };
-  setQuizList(await fetchJSON("/api/getQuestion", { session: nowSession }));
+  const quizList = await fetchJSON("/api/getQuestion", { session: nowSession })
+
+  setQuizList(quizList);
   initAnsList(initAnsList);
   setCurrentQuiz(getQuizList()[0]);
   loopQuiz(getCurrentQuiz());
@@ -91,12 +95,12 @@ const loopQuiz = async (nowQuiz) => {
   visibility("resultButton", false);
 
   getElement("submitButton").onclick = async () => {
-    const { nextId } = nowQuiz;
+    const { nextId, lastQuestion } = nowQuiz;
     visibility("answerContainer", true);
     visibility("choicesContainer", false);
     visibility("submitButton", false);
 
-    if (nextId === FINAL_QUIZ_ID) {
+    if (nowQuiz.lastQuestion) {
       visibility("resultButton", true);
     } else {
       visibility("nextButton", true);
@@ -110,6 +114,7 @@ const loopQuiz = async (nowQuiz) => {
     const { explanation, answerId } = await fetchJSON("/api/getAnswer", {
       quizId: nowQuiz.quizId,
     });
+
     if(answerId===getCurrentChoice()){
       getElement("correct").innerText="正解";
     }else{
