@@ -189,6 +189,9 @@ body {
     height: 5rem;
     width: 100%;
     margin-bottom: 1rem;
+    text-align: left;
+    padding-left: 1rem;
+    padding-right: 1rem;
 }
 .main-choice-button:focus {
     background: linear-gradient(150.8deg, #E8EBF1 5.84%, rgba(232, 241, 248, 0) 147.58%);
@@ -210,11 +213,15 @@ body {
 
 .correct-incorrect {
     width: 136px;
-    height: 54px;
     font-weight: 900;
     font-size: 30px;
     text-align: center;
     margin: 1rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+.spacing {
+    letter-spacing: 0.05em;
 }
 
 #answer {
@@ -222,12 +229,17 @@ body {
 }
 #explanation-head {
     margin: 1rem;
-    text-align: center;
     width: 136px;
+    font-weight: 900;
+    text-align: center;
+    margin: 1rem;
+    padding-top: 0.3rem;
+    padding-bottom: 0.3rem;
 }
 #explanation {
     margin: 1rem;
     overflow-y: scroll;
+    text-align: left;
 }
 
 .outer-shadow {
