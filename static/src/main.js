@@ -20,9 +20,7 @@ getElement("submitButton").disabled = true;
 
 const getQuizList = () => state.get("quizList");
 const setCurrentChoice = (data) => state.set("currentChoice", data);
-const getCurrentChoice = () => {
-  state.get("currentChoice");
-};
+const getCurrentChoice = () => state.get("currentChoice");
 const setCurrentQuiz = (data) => state.set("currentQuiz", data);
 const getCurrentQuiz = () => state.get("currentQuiz");
 const setAnswers = ({ id, currAns }) => {
@@ -113,11 +111,17 @@ const loopQuiz = async (nowQuiz) => {
     const { explanation, answerId } = await fetchJSON("/api/getAnswer", {
       quizId: nowQuiz.quizId,
     });
+    if(answerId===getCurrentChoice()){
+      console.log("correct")
+      getElement("correct").innerText="正解";
+    }else{
+      getElement("correct").innerText="不正解";
+      console.log("incorrect")
+    }
 
     const choiceText = nowQuiz.choices.find((a) => a.id === answerId).text;
     getElement("explanation").innerText = explanation;
     getElement("answer").innerText = choiceText;
-    console.log(getCurrentChoice());
   };
 
   getElement("nextButton").onclick = async () => {
