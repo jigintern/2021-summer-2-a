@@ -20,7 +20,7 @@ export function getSessionId(id) {
     user = users.data.find((u) => u.session_id == id);
   }
   if (!user) {
-    let session = Math.random();
+    let session = Math.random() + "";
     user = {
       name: "",
       session_id: session,
