@@ -24,6 +24,7 @@ answers
 */
 
 const USERS_ANSWERS_PATH = "./server/json/users_answers.json";
+const QUESTIONS_PATH = "./server/json/questions.json";
 
 //*解答を保存するAPI
 //*フロント側で解答を集計→サーバーに渡す→users_answers.jsonに保存
@@ -64,6 +65,7 @@ export function getUserLatestAnswer(sessionId) {
     }
 
     const usersAnswers = new JSONDB(USERS_ANSWERS_PATH);
+    const questions = new JSONDB(QUESTIONS_PATH);
     let usersLatestAnswer;
     let maxAnsCount = 0;
     usersAnswers.data.forEach(e => {
@@ -74,6 +76,16 @@ export function getUserLatestAnswer(sessionId) {
             usersLatestAnswer = e;
         }
     });
+
+    usersLatestAnswer.answers.forEach(e => {
+        const quizId = e.quizId;
+        let quiz = questions.data.quizData.find(q => q.quizId == quizId);
+        if (quiz) {
+            e.statement = quiz.statement;
+            e.correct = e.amswer == quiz.answerId;
+        }
+    });
+
     return usersLatestAnswer;
 }
 
