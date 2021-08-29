@@ -1,4 +1,8 @@
 import { JSONDB } from "https://js.sabae.cc/JSONDB.js";
+import { uniq } from "../util/util.js"
+
+const question_json = new JSONDB("./server/json/questions.json");
+const setting_json = new JSONDB("./server/json/user_setting.json"); 
 
 /**
  * 問題を返す
@@ -7,8 +11,6 @@ import { JSONDB } from "https://js.sabae.cc/JSONDB.js";
  * @returns 
  */
 export function getQuestion(sessionId) {
-    const question_json =new JSONDB("./server/json/questions.json");
-    const setting_json=new JSONDB("./server/json/user_setting.json");   
     //データ件数numを取得。
     let setting;
     if (sessionId) {
@@ -20,14 +22,28 @@ export function getQuestion(sessionId) {
     } else {
         limit = setting.question_volume;
     }
-    /***シャッフル***/
-    let shuffle_question=new Array(limit);
-    for (let i = 0; i < limit; i++) {
-        shuffle_question[i]=question_json.data.quizData[Math.floor(Math.random()*question_json.data.quizData.length)];
+
+    let shuffled;
+    for (; ;) {
+        let shuffle_question = new Array(Number(limit));
+
+        /***シャッフル***/
+        for (let i = 0; i < limit; i++) {
+            shuffle_question[i]=question_json.data.quizData[Math.floor(Math.random()*question_json.data.quizData.length)];
+        }
+
+        // 重複した問題があると弾く
+        // 弾いた結果limit以下ならもう一度データを取得し直す
+        const uniqed = uniq(shuffle_question)
+        if (uniqed.length == limit) {
+            shuffled = uniqed
+            break
+        }
     }
+
     /****************/
     // 問題から回答のみ削除
-    const get_question = shuffle_question.map((data) => {
+    const get_question = shuffled.map((data) => {
         delete data.answerId;
         delete data.explanation;
         return data;
@@ -37,6 +53,5 @@ export function getQuestion(sessionId) {
     console.log(q);
     q.lastQuestion = true;
 
-    return get_question; 
+    return get_question;
 }
-
