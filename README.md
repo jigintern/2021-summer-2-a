@@ -11,7 +11,3 @@
 1. クローン
 2. [deno](https://deno.land/)をインストール。
 3. `deno run -A --watch server.js`と実行
-
-## 問題出典
-
-- [大阪府／ＳＮＳの使い方をチェック！（＃挑戦）](https://www.pref.osaka.lg.jp/koseishonen/osaka_sns/tyousen.html)
